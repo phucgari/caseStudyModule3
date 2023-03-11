@@ -10,7 +10,7 @@ public interface GenericController<E> {
     String jdbcPassword = "123456";
     Connector connector=new Connector(jdbcURL,jdbcUsername,jdbcPassword);
     Collection<E> showAll();
-    void create();
+    void create(E object);
     E showByIndex(int index);
     void update(E Object);
     void delete(int index);
