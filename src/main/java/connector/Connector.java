@@ -1,10 +1,5 @@
 package connector;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-
 public class Connector {
     private String jdbcURL;
     private String jdbcUsername;

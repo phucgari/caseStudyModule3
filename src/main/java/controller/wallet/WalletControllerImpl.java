@@ -1,4 +1,5 @@
 package controller.wallet;
 
-public class WalletControllerImpl{
+public class WalletControllerImpl {
+
 }
