@@ -37,6 +37,12 @@ public class User {
         this.address = address;
     }
 
+    public User(int id, String login_name, String login_password) {
+        this.id = id;
+        this.login_name = login_name;
+        this.login_password = login_password;
+    }
+
     public User(String login_name, String login_password) {
         this.login_name = login_name;
         this.login_password = login_password;
@@ -141,5 +147,22 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login_name='" + login_name + '\'' +
+                ", login_password='" + login_password + '\'' +
+                ", email='" + email + '\'' +
+                ", picture_url='" + picture_url + '\'' +
+                ", gender=" + gender +
+                ", user_name='" + user_name + '\'' +
+                ", user_dob=" + user_dob +
+                ", card_id='" + card_id + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
