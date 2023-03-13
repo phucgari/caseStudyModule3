@@ -11,6 +11,9 @@ public class Connector {
     private String jdbcPassword;
     private static final String FLUSH = "call flush();";
 
+    public Connector() {
+    }
+
     public Connector(String jdbcURL, String jdbcUsername, String jdbcPassword) {
         this.jdbcURL = jdbcURL;
         this.jdbcUsername = jdbcUsername;
