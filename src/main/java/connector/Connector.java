@@ -1,9 +1,14 @@
 package connector;
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class Connector {
-    private String jdbcURL;
-    private String jdbcUsername;
-    private String jdbcPassword;
+    private String jdbcURL = "jdbc:mysql://localhost:3306/";
+    private String jdbcUsername = "root";
+    private String jdbcPassword  = "123456";
     private static final String FLUSH = "call flush();";
 
     public Connector(String jdbcURL, String jdbcUsername, String jdbcPassword) {
@@ -17,9 +22,7 @@ public class Connector {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection= DriverManager.getConnection(jdbcURL,jdbcUsername,jdbcPassword);
             return connection;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
