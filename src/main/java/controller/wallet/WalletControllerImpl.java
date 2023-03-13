@@ -14,9 +14,10 @@ public class WalletControllerImpl implements WalletController{
     private static final String GET_ALL_WALLET=
             "select wallet.id,wallet.name,wallet.balance,wallet.user_id,user.login_name,user.login_password " +
             "from wallet " +
-            "left join user on wallet.user_id=user.id";
+            "left join user on wallet.user_id=user.id where wallet.disable=0";
     private static final String CREATE_A_WALLET="insert into wallet(name,balance,user_id) values (?,?,?)";
     private static final String UPDATE_A_WALLET="update wallet set name=?,balance=? where id=?";
+    private static final String DELETE_A_WALLET="update wallet set disable=? WHERE id=?";
 
     @Override
     public ArrayList<Wallet> showAll() {
@@ -87,5 +88,13 @@ public class WalletControllerImpl implements WalletController{
     @Override
     public void delete(int index) {
         //function 23
+        try(Connection connection=connector.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(DELETE_A_WALLET)){
+            preparedStatement.setInt(2,index);
+            preparedStatement.setInt(1,1);
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
