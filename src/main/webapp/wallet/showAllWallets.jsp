@@ -1,15 +1,18 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 3/10/2023
-  Time: 4:20 PM
+  Date: 3/13/2023
+  Time: 2:32 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>All Wallets of ${requestScope["login_name"]}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -31,11 +34,11 @@
                         Wallets
                     </a>
                     <form method="post">
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <c:forEach items='${requestScope["wallets"]}' var="wallet">
-                            <li><button class="dropdown-item" name="wallet_id" value="${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</button></li>
-                        </c:forEach>
-                    </ul>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <c:forEach items='${requestScope["wallets"]}' var="wallet">
+                                <li><button class="dropdown-item" name="wallet_id" value="${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</button></li>
+                            </c:forEach>
+                        </ul>
                     </form>
                 </li>
                 <li class="nav-item">
@@ -49,5 +52,23 @@
         </div>
     </div>
 </nav>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Balance</th>
+        <th>Show Transactions</th>
+    </tr>
+    <form method="post">
+        <c:forEach items='${requestScope["wallets"]}' var="wallet">
+            <tr>
+                <td>${wallet.getName()}</td>
+                <td>${wallet.getBalance()}</td>
+                <td><button type="submit" value="${wallet.getId()}" name="wallet_id">Transactions</button></td>
+            </tr>
+        </c:forEach>
+    </form>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
