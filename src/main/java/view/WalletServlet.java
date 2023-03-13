@@ -1,6 +1,7 @@
 package view;
 
 import controller.wallet.WalletControllerImpl;
+import manager.WalletManager;
 import model.Wallet;
 
 import javax.servlet.*;
@@ -11,7 +12,6 @@ import java.util.ArrayList;
 
 @WebServlet(name = "WalletServlet", value = "/wallet")
 public class WalletServlet extends HttpServlet {
-    WalletControllerImpl walletController= new WalletControllerImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action=request.getParameter("action");
@@ -23,12 +23,7 @@ public class WalletServlet extends HttpServlet {
     }
 
     private void showALlWallet(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session=request.getSession();
-        int id= (int) session.getAttribute("id");
-        String login_name=(String)session.getAttribute("login_name");
-        ArrayList<Wallet> wallets=walletController.showAllWalletById(id);
-        request.setAttribute("wallets",wallets);
-        request.setAttribute("login_name",login_name);
+        WalletManager.setWalletList(request);
         try {
             request.getRequestDispatcher("wallet/showAllWallets.jsp").forward(request,response);
         } catch (ServletException e) {
