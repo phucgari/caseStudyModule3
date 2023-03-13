@@ -48,6 +48,12 @@ public class Wallet {
         this.user_id = user_id;
     }
 
+    public Wallet(String name, long balance, User user_id) {
+        this.name = name;
+        this.balance = balance;
+        this.user_id = user_id;
+    }
+
     @Override
     public String toString() {
         return "Wallet{" +

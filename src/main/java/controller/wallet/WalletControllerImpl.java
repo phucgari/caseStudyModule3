@@ -11,7 +11,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class WalletControllerImpl implements WalletController{
-    private static final String GET_ALL_WALLET="select * from wallet left join user on wallet.user_id=user.id";
+    private static final String GET_ALL_WALLET=
+            "select wallet.id,wallet.name,wallet.balance,wallet.user_id,user.login_name,user.login_password " +
+            "from wallet " +
+            "left join user on wallet.user_id=user.id";
+    private static final String CREATE_A_WALLET="insert into wallet(name,balance,user_id) values (?,?,?)";
     @Override
     public ArrayList<Wallet> showAll() {
         // function 10+11
@@ -20,9 +24,9 @@ public class WalletControllerImpl implements WalletController{
             PreparedStatement preparedStatement=connection.prepareStatement(GET_ALL_WALLET)) {
             ResultSet resultset=preparedStatement.executeQuery();
             while (resultset.next()){
-                int id=resultset.getInt(1);
-                String name =resultset.getString(2);
-                long balance=resultset.getLong(3);
+                int id=resultset.getInt("id");
+                String name =resultset.getString("name");
+                long balance=resultset.getLong("balance");
                 User user=generateUser(resultset);
                 Wallet wallet=new Wallet(id,name,balance,user);
                 result.add(wallet);
@@ -35,9 +39,9 @@ public class WalletControllerImpl implements WalletController{
 
     private User generateUser(ResultSet resultset) {
         try {
-            int id=resultset.getInt(5);
-            String login_name=resultset.getString(6);
-            String login_password=resultset.getString(7);
+            int id=resultset.getInt("user_id");
+            String login_name=resultset.getString("login_name");
+            String login_password=resultset.getString("login_password");
             return new User(id,login_name,login_password);
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -48,6 +52,15 @@ public class WalletControllerImpl implements WalletController{
     @Override
     public void create(Wallet object) {
         // function 24
+        try(Connection connection=connector.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(CREATE_A_WALLET)) {
+            preparedStatement.setString(1,object.getName());
+            preparedStatement.setLong(2,object.getBalance());
+            preparedStatement.setInt(3,object.getUser_id().getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
