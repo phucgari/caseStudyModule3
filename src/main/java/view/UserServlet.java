@@ -28,8 +28,14 @@ public class UserServlet extends HttpServlet {
     private void listUser(HttpServletRequest request, HttpServletResponse response)
         throws SQLException, IOException, ServletException {
         List<User> userList = userController.showAll();
-        request.setAttribute("listUser", userList);
+        request.setAttribute("UserList", userList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("user/list.jsp");
         dispatcher.forward(request, response);
     }
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException{
+        RequestDispatcher dispatcher = request.getRequestDispatcher("user/create.jsp");
+        dispatcher.forward(request, response);
+    }
+
 }
