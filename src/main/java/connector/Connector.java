@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Connector {
-    private String jdbcURL = "jdbc:mysql://localhost:3306/";
-    private String jdbcUsername = "root";
-    private String jdbcPassword  = "123456";
+    private String jdbcURL;
+    private String jdbcUsername;
+    private String jdbcPassword;
     private static final String FLUSH = "call flush();";
 
     public Connector(String jdbcURL, String jdbcUsername, String jdbcPassword) {
