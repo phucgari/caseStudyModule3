@@ -12,6 +12,6 @@ public interface GenericController<E> {
     Collection<E> showAll();
     void create(E object);
     E showByIndex(int index);
-    void update(E Object);
+    void update(E object);
     void delete(int index);
 }

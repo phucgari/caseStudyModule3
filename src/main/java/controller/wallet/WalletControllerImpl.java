@@ -16,6 +16,8 @@ public class WalletControllerImpl implements WalletController{
             "from wallet " +
             "left join user on wallet.user_id=user.id";
     private static final String CREATE_A_WALLET="insert into wallet(name,balance,user_id) values (?,?,?)";
+    private static final String UPDATE_A_WALLET="update wallet set name=?,balance=? where id=?";
+
     @Override
     public ArrayList<Wallet> showAll() {
         // function 10+11
@@ -69,8 +71,17 @@ public class WalletControllerImpl implements WalletController{
     }
 
     @Override
-    public void update(Wallet Object) {
+    public void update(Wallet object) {
         //function 22
+        try(Connection connection=connector.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(UPDATE_A_WALLET)){
+            preparedStatement.setString(1,object.getName());
+            preparedStatement.setLong(2,object.getBalance());
+            preparedStatement.setInt(3,object.getId());
+            preparedStatement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
