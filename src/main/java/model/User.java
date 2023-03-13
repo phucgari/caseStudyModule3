@@ -1,5 +1,8 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -11,11 +14,11 @@ public class User {
     private String picture_url;
     private boolean gender;
     private String user_name;
-    private String user_dob;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    private String user_dob = formatter.format(new Date());
     private String card_id;
     private String phone;
     private String address;
-
 
     public User() {
     }
