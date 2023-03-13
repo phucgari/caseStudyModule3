@@ -11,7 +11,7 @@ public class User {
     private boolean gender;
     private String user_name;
     private Date user_dob;
-    private String cmt;
+    private String card_id;
     private long phone;
     private String address;
 
@@ -19,7 +19,7 @@ public class User {
     }
 
     public User(int id, String login_name, String login_password, String email, String picture_url,
-                boolean gender, String user_name, Date user_dob, String cmt, long phone, String address) {
+                boolean gender, String user_name, Date user_dob, String card_id, long phone, String address) {
         this.id = id;
         this.login_name = login_name;
         this.login_password = login_password;
@@ -28,7 +28,7 @@ public class User {
         this.gender = gender;
         this.user_name = user_name;
         this.user_dob = user_dob;
-        this.cmt = cmt;
+        this.card_id = card_id;
         this.phone = phone;
         this.address = address;
     }
@@ -97,12 +97,12 @@ public class User {
         this.user_dob = user_dob;
     }
 
-    public String getCmt() {
-        return cmt;
+    public String getCard_id() {
+        return card_id;
     }
 
-    public void setCmt(String cmt) {
-        this.cmt = cmt;
+    public void setCard_id(String card_id) {
+        this.card_id = card_id;
     }
 
     public long getPhone() {
