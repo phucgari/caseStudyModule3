@@ -17,5 +17,4 @@ class ConnectorTest {
     void testFlush(){
         connector.flush();
     }
-
 }
