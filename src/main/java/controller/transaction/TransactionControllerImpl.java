@@ -14,9 +14,9 @@ public class TransactionControllerImpl implements TransactionController {
                     "from transaction" +
                     "left join wallet on transaction.wallet_id=wallet.id where transaction.disable=0 ";
     private static final String GET_ALL_TRANSACTION_BY_ID =
-            "\"select transaction.id,transaction.name,transaction.time,transaction.money_Amount,transaction.action,transaction.wallet_id\" +\n" +
-                    "                    \"from transaction\" +\n" +
-                    "                    \"left join wallet on transaction.wallet_id=wallet.id where transaction.disable=0 and transaction.wallet_id = ?\";";
+            "select transaction.id,transaction.name,transaction.time,transaction.money_Amount,transaction.action,transaction.wallet_id"  +
+                    "                    from transaction" +
+                    "                    left join wallet on transaction.wallet_id=wallet.id where transaction.disable=0 and transaction.wallet_id = ?";
     private static final String CREATE_A_TRANSACTION = "insert into transaction(time, money_Amount, action, wallet_id) values (?,?,?,?)";
     private static final String UPDATE_A_TRANSACTION = "update transaction set time = ?, money_Amount = ?, action = ?, wallet_id = ? where id = ?";
     private static final String DELETE_A_TRANSACTION = "update transaction set disable=1 WHERE id=?";
@@ -38,7 +38,7 @@ public class TransactionControllerImpl implements TransactionController {
     public ArrayList<Transaction> showAllTransactionById(int id){
         ArrayList<Transaction> transactions = new ArrayList<>();
         try(Connection connection=connector.getConnection();
-            PreparedStatement preparedStatement=connection.prepareStatement(GET_ALL_TRANSACTION)) {
+            PreparedStatement preparedStatement=connection.prepareStatement(GET_ALL_TRANSACTION_BY_ID)) {
             preparedStatement.setInt(1,id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
