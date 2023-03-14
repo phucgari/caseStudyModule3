@@ -1,6 +1,7 @@
 package controller.user;
 import model.User;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Collection;
 
 
@@ -45,7 +46,7 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
-            preparedStatement.setString(7, user.getUser_dob());
+            preparedStatement.setDate(7, Date.valueOf(user.getUser_dob()));
 
             if (user.getCard_id() != "" ){
                 preparedStatement.setString(8, user.getCard_id());
@@ -81,7 +82,7 @@ public class UserControllerImpl implements UserController{
                 String picture_url = rs.getString("picture_url");
                 boolean gender = rs.getBoolean("gender");
                 String user_name = rs.getString("user_name");
-                String user_dob = rs.getString("user_dob");
+                LocalDate user_dob = rs.getDate("user_dob")==null?null:rs.getDate("user_dob").toLocalDate();
                 String card_id = rs.getString("card_id");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
@@ -117,7 +118,7 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
-            preparedStatement.setString(7, user.getUser_dob());
+            preparedStatement.setDate(7, Date.valueOf(user.getUser_dob()));
 
             if (user.getCard_id() != "" ){
                 preparedStatement.setString(8, user.getCard_id());
