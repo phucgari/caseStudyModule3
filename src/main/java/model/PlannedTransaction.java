@@ -1,8 +1,6 @@
 package model;
 
-import java.time.LocalDate;
-
-public class PlannedTransaction{
+public class PlannedTransaction extends Transaction{
     private int id;
     private String action;
     private int money_Amount;

@@ -1,31 +1,64 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 public class User {
     private int id;
-    private String name;
     private String login_name;
     private String login_password;
     private String email;
     private String picture_url;
     private boolean gender;
-    private String user_dob;
+    private String user_name;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    private String user_dob = formatter.format(new Date());
     private String card_id;
     private String phone;
+    private String address;
 
     public User() {
     }
 
-    public User(int id, String name, String login_name, String login_password, String email, String picture_url, boolean gender, String user_dob, String card_id, String phone) {
+    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
         this.id = id;
-        this.name = name;
         this.login_name = login_name;
         this.login_password = login_password;
         this.email = email;
         this.picture_url = picture_url;
         this.gender = gender;
+        this.user_name = user_name;
         this.user_dob = user_dob;
         this.card_id = card_id;
         this.phone = phone;
+        this.address = address;
+    }
+
+    public User(int id, String login_name, String login_password) {
+        this.id = id;
+        this.login_name = login_name;
+        this.login_password = login_password;
+    }
+
+    public User(String login_name, String login_password) {
+        this.login_name = login_name;
+        this.login_password = login_password;
+    }
+
+    public User(String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
+        this.login_name = login_name;
+        this.login_password = login_password;
+        this.email = email;
+        this.picture_url = picture_url;
+        this.gender = gender;
+        this.user_name = user_name;
+        this.user_dob = user_dob;
+        this.card_id = card_id;
+        this.phone = phone;
+        this.address = address;
     }
 
     public int getId() {
@@ -34,14 +67,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getLogin_name() {
@@ -84,6 +109,14 @@ public class User {
         this.gender = gender;
     }
 
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
     public String getUser_dob() {
         return user_dob;
     }
@@ -106,5 +139,30 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login_name='" + login_name + '\'' +
+                ", login_password='" + login_password + '\'' +
+                ", email='" + email + '\'' +
+                ", picture_url='" + picture_url + '\'' +
+                ", gender=" + gender +
+                ", user_name='" + user_name + '\'' +
+                ", user_dob=" + user_dob +
+                ", card_id='" + card_id + '\'' +
+                ", phone='" + phone + '\'' +
+                ", address='" + address + '\'' +
+                '}';
     }
 }
