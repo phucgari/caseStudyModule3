@@ -5,7 +5,8 @@ import model.Transaction;
 import java.util.Collection;
 
 public class TransactionControllerImpl implements TransactionController{
-
+//    private static final String GET_ALL_TRANSACTION =
+//            "select transaction.id,transaction."
     @Override
     public Collection<Transaction> showAll() {
         return null;
@@ -14,6 +15,7 @@ public class TransactionControllerImpl implements TransactionController{
     @Override
     public void create(Transaction transaction) {
         //function 7
+
     }
 
     @Override
