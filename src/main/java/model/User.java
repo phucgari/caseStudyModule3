@@ -1,41 +1,31 @@
 package model;
 
-import java.time.LocalDate;
-
 public class User {
     private int id;
+    private String name;
     private String login_name;
     private String login_password;
     private String email;
     private String picture_url;
     private boolean gender;
-    private String user_name;
-    private LocalDate user_dob;
+    private String user_dob;
     private String card_id;
     private String phone;
-    private String address;
-
 
     public User() {
     }
 
-    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, LocalDate user_dob, String card_id, String phone, String address) {
+    public User(int id, String name, String login_name, String login_password, String email, String picture_url, boolean gender, String user_dob, String card_id, String phone) {
         this.id = id;
+        this.name = name;
         this.login_name = login_name;
         this.login_password = login_password;
         this.email = email;
         this.picture_url = picture_url;
         this.gender = gender;
-        this.user_name = user_name;
         this.user_dob = user_dob;
         this.card_id = card_id;
         this.phone = phone;
-        this.address = address;
-    }
-
-    public User(String login_name, String login_password) {
-        this.login_name = login_name;
-        this.login_password = login_password;
     }
 
     public int getId() {
@@ -44,6 +34,14 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLogin_name() {
@@ -86,19 +84,11 @@ public class User {
         this.gender = gender;
     }
 
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public LocalDate getUser_dob() {
+    public String getUser_dob() {
         return user_dob;
     }
 
-    public void setUser_dob(LocalDate user_dob) {
+    public void setUser_dob(String user_dob) {
         this.user_dob = user_dob;
     }
 
@@ -116,13 +106,5 @@ public class User {
 
     public void setPhone(String phone) {
         this.phone = phone;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 }
