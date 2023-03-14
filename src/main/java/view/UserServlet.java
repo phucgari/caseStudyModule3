@@ -1,6 +1,7 @@
 package view;
 
 import controller.user.UserControllerImpl;
+import manager.WalletManager;
 import model.User;
 
 import javax.servlet.*;
@@ -28,13 +29,23 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
-//                case "view":
-//                    find(request, response);
-//                    break;
+                default:
+                    showUserProfile(request, response);
+                    break;
             }
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void showUserProfile(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session=request.getSession();
+        int id= (int) session.getAttribute("id");
+        User user=userControllerImpl.showByIndex(id);
+        request.setAttribute("user",user);
+        WalletManager.setWalletList(request);
+        RequestDispatcher dispatcher=request.getRequestDispatcher("userAction/profile.jsp");
+        dispatcher.forward(request,response);
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
