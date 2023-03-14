@@ -5,6 +5,7 @@ import model.Transaction;
 import java.util.Collection;
 
 public class TransactionControllerImpl implements TransactionController{
+
     @Override
     public Collection<Transaction> showAll() {
         return null;
