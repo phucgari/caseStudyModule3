@@ -11,6 +11,9 @@ public class Connector {
     private String jdbcPassword;
     private static final String FLUSH = "call flush();";
 
+    public Connector() {
+    }
+
     public Connector(String jdbcURL, String jdbcUsername, String jdbcPassword) {
         this.jdbcURL = jdbcURL;
         this.jdbcUsername = jdbcUsername;
@@ -22,9 +25,7 @@ public class Connector {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection= DriverManager.getConnection(jdbcURL,jdbcUsername,jdbcPassword);
             return connection;
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }

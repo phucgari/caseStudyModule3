@@ -1,6 +1,10 @@
 package model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 
 public class User {
     private int id;
@@ -10,16 +14,16 @@ public class User {
     private String picture_url;
     private boolean gender;
     private String user_name;
-    private LocalDate user_dob;
+    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
+    private String user_dob = formatter.format(new Date());
     private String card_id;
     private String phone;
     private String address;
 
-
     public User() {
     }
 
-    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, LocalDate user_dob, String card_id, String phone, String address) {
+    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
         this.id = id;
         this.login_name = login_name;
         this.login_password = login_password;
@@ -42,6 +46,19 @@ public class User {
     public User(String login_name, String login_password) {
         this.login_name = login_name;
         this.login_password = login_password;
+    }
+
+    public User(String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
+        this.login_name = login_name;
+        this.login_password = login_password;
+        this.email = email;
+        this.picture_url = picture_url;
+        this.gender = gender;
+        this.user_name = user_name;
+        this.user_dob = user_dob;
+        this.card_id = card_id;
+        this.phone = phone;
+        this.address = address;
     }
 
     public int getId() {
@@ -100,11 +117,11 @@ public class User {
         this.user_name = user_name;
     }
 
-    public LocalDate getUser_dob() {
+    public String getUser_dob() {
         return user_dob;
     }
 
-    public void setUser_dob(LocalDate user_dob) {
+    public void setUser_dob(String user_dob) {
         this.user_dob = user_dob;
     }
 
