@@ -1,13 +1,14 @@
 package controller.user;
-import com.mysql.cj.AbstractQuery;
+
 import model.User;
 
 import javax.servlet.http.HttpSession;
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.Collection;
 
 
-public class UserControllerImpl implements UserController{
+public class UserControllerImpl implements UserController {
 
     private static final String SELECT_USER_BY_ID = "select * from user where user.id =?";
     private static final String CREATE_USERS = "INSERT INTO user (user.login_name, user.login_password, user.email, " +
@@ -36,13 +37,13 @@ public class UserControllerImpl implements UserController{
             preparedStatement.setString(1, user.getLogin_name());
             preparedStatement.setString(2, user.getLogin_password());
 
-            if (user.getEmail() !="" ){
+            if (user.getEmail() != "") {
                 preparedStatement.setString(3, user.getEmail());
             } else {
                 preparedStatement.setString(3, null);
             }
 
-            if (user.getPicture_url() != "" ){
+            if (user.getPicture_url() != "") {
                 preparedStatement.setString(4, user.getPicture_url());
             } else {
                 preparedStatement.setString(4, null);
@@ -50,9 +51,9 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
-            preparedStatement.setString(7, user.getUser_dob());
+            preparedStatement.setDate(7, Date.valueOf(user.getUser_dob()));
 
-            if (user.getCard_id() != "" ){
+            if (user.getCard_id() != "") {
                 preparedStatement.setString(8, user.getCard_id());
             } else {
                 preparedStatement.setString(8, null);
@@ -60,14 +61,14 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setString(9, user.getPhone());
 
-            if (user.getAddress() != "" ){
+            if (user.getAddress() != "") {
                 preparedStatement.setString(10, user.getAddress());
             } else {
                 preparedStatement.setString(10, null);
             }
             preparedStatement.execute();
-        } catch (SQLException e){
-           e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 
@@ -86,7 +87,7 @@ public class UserControllerImpl implements UserController{
                 String picture_url = rs.getString("picture_url");
                 boolean gender = rs.getBoolean("gender");
                 String user_name = rs.getString("user_name");
-                String user_dob = rs.getString("user_dob");
+                LocalDate user_dob = rs.getDate("user_dob") == null ? null : rs.getDate("user_dob").toLocalDate();
                 String card_id = rs.getString("card_id");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
@@ -108,13 +109,13 @@ public class UserControllerImpl implements UserController{
             preparedStatement.setString(1, user.getLogin_name());
             preparedStatement.setString(2, user.getLogin_password());
 
-            if (user.getEmail() !="" ){
+            if (user.getEmail() != "") {
                 preparedStatement.setString(3, user.getEmail());
             } else {
                 preparedStatement.setString(3, null);
             }
 
-            if (user.getPicture_url() != "" ){
+            if (user.getPicture_url() != "") {
                 preparedStatement.setString(4, user.getPicture_url());
             } else {
                 preparedStatement.setString(4, null);
@@ -122,9 +123,9 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
-            preparedStatement.setString(7, user.getUser_dob());
+            preparedStatement.setDate(7, Date.valueOf(user.getUser_dob()));
 
-            if (user.getCard_id() != "" ){
+            if (user.getCard_id() != "") {
                 preparedStatement.setString(8, user.getCard_id());
             } else {
                 preparedStatement.setString(8, null);
@@ -132,22 +133,22 @@ public class UserControllerImpl implements UserController{
 
             preparedStatement.setString(9, user.getPhone());
 
-            if (user.getAddress() != "" ){
+            if (user.getAddress() != "") {
                 preparedStatement.setString(10, user.getAddress());
             } else {
                 preparedStatement.setString(10, null);
             }
             preparedStatement.setInt(11, user.getId());
 
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     @Override
     public void delete(int index) {
-        try ( Connection connection = connector.getConnection();
-              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);) {
+        try (Connection connection = connector.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);) {
             preparedStatement.setInt(1, index);
             preparedStatement.execute();
         } catch (SQLException e) {
@@ -157,8 +158,8 @@ public class UserControllerImpl implements UserController{
 
     @Override
     public User login(String login_name, String login_password) {
-        try ( Connection connection = connector.getConnection();
-              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER);) {
+        try (Connection connection = connector.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER);) {
             preparedStatement.setString(1, login_name);
             preparedStatement.setString(2, login_password);
             ResultSet rs = preparedStatement.executeQuery();
@@ -171,7 +172,7 @@ public class UserControllerImpl implements UserController{
                         rs.getString(5),
                         rs.getBoolean(6),
                         rs.getString(7),
-                        rs.getString(8),
+                        rs.getDate(8).toLocalDate(),
                         rs.getString(9),
                         rs.getString(10),
                         rs.getString(11)

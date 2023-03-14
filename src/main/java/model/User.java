@@ -15,7 +15,7 @@ public class User {
     private boolean gender;
     private String user_name;
     SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-    private String user_dob = formatter.format(new Date());
+    LocalDate user_dob;
     private String card_id;
     private String phone;
     private String address;
@@ -23,7 +23,7 @@ public class User {
     public User() {
     }
 
-    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
+    public User(int id, String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, LocalDate user_dob, String card_id, String phone, String address) {
         this.id = id;
         this.login_name = login_name;
         this.login_password = login_password;
@@ -48,7 +48,7 @@ public class User {
         this.login_password = login_password;
     }
 
-    public User(String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, String user_dob, String card_id, String phone, String address) {
+    public User(String login_name, String login_password, String email, String picture_url, boolean gender, String user_name, LocalDate user_dob, String card_id, String phone, String address) {
         this.login_name = login_name;
         this.login_password = login_password;
         this.email = email;
@@ -117,11 +117,11 @@ public class User {
         this.user_name = user_name;
     }
 
-    public String getUser_dob() {
+    public LocalDate getUser_dob() {
         return user_dob;
     }
 
-    public void setUser_dob(String user_dob) {
+    public void setUser_dob(LocalDate user_dob) {
         this.user_dob = user_dob;
     }
 
