@@ -31,8 +31,4 @@ public class TransactionControllerImpl implements TransactionController{
         //function 18
     }
 
-    @Override
-    public Transaction login(String userName, String password) {
-        return null;
-    }
 }

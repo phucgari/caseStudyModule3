@@ -93,12 +93,12 @@ public class UserServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("login_name", login_name);
-        session.setAttribute("login_password", login_password);
+        session.setAttribute("id", user.getId());
 
         if(user == null){
             response.sendRedirect("userAction/login.jsp");
         } else {
-            response.sendRedirect("userAction/editProfile.jsp");
+            response.sendRedirect("userAction/profile.jsp");
         }
     }
 

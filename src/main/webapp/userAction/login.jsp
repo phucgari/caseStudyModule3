@@ -65,7 +65,7 @@
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
 
-                    Sign Up   Don't have an account?<a href="create">Sign Up</a>
+                    Sign Up   Don't have an account?<a href="user?action=create">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="#">Forgot your password?</a>

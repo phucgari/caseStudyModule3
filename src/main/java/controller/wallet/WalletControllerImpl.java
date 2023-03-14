@@ -121,8 +121,4 @@ public class WalletControllerImpl implements WalletController{
         }
     }
 
-    @Override
-    public Wallet login(String userName, String password) {
-        return null;
-    }
 }
