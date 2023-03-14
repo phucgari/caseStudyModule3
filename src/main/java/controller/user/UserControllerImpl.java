@@ -6,14 +6,17 @@ import java.util.Collection;
 
 public class UserControllerImpl implements UserController{
 
-    private static final String SELECT_USER_BY_ID = "select id,login_name, login_password, email, \" +\n" +
-            "            \"picture_url, gender, user_name, user_dob, card_id, phone, address from users where id =?";
-    private static final String CREATE_USERS = "INSERT INTO user (login_name, login_password, email, " +
-            "picture_url, gender, user_name, user_dob, card_id, phone, address) " +
+    private static final String SELECT_USER_BY_ID = "select * from user where user.id =?";
+    private static final String CREATE_USERS = "INSERT INTO user (user.login_name, user.login_password, user.email, " +
+            "user.picture_url, user.gender, user.user_name, user.user_dob, user.card_id, user.phone, user.address) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    private static final String UPDATE_USERS_SQL = "update user set login_name = ?, login_password = ?, email = ?," +
-            "picture_url = ?, gender = ?, user_name = ?, user_dob = ?, card_id = ?, phone = ?, address where id = ?;";
-    private static final String DELETE_USERS_SQL = "delete from user where id = ?;";
+    private static final String UPDATE_USERS_SQL = "update user set user.login_name = ?, user.login_password = ?, user.email = ?," +
+            "user.picture_url = ?, user.gender = ?, user.user_name = ?, user.user_dob = ?, user.card_id = ?, user.phone = ?, user.address where user.id = ?;";
+    private static final String DELETE_USERS_SQL = "delete from user where user.id = ?;";
+
+    public UserControllerImpl() {
+    }
+
     @Override
     public Collection<User> showAll() {
         return null;
@@ -27,14 +30,36 @@ public class UserControllerImpl implements UserController{
              PreparedStatement preparedStatement = connection.prepareStatement(CREATE_USERS)) {
             preparedStatement.setString(1, user.getLogin_name());
             preparedStatement.setString(2, user.getLogin_password());
-            preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getPicture_url());
+
+            if (user.getEmail() !="" ){
+                preparedStatement.setString(3, user.getEmail());
+            } else {
+                preparedStatement.setString(3, null);
+            }
+
+            if (user.getPicture_url() != "" ){
+                preparedStatement.setString(4, user.getPicture_url());
+            } else {
+                preparedStatement.setString(4, null);
+            }
+
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
             preparedStatement.setString(7, user.getUser_dob());
-            preparedStatement.setString(8, user.getCard_id());
+
+            if (user.getCard_id() != "" ){
+                preparedStatement.setString(8, user.getCard_id());
+            } else {
+                preparedStatement.setString(8, null);
+            }
+
             preparedStatement.setString(9, user.getPhone());
-            preparedStatement.setString(10, user.getAddress());
+
+            if (user.getAddress() != "" ){
+                preparedStatement.setString(10, user.getAddress());
+            } else {
+                preparedStatement.setString(10, null);
+            }
             preparedStatement.execute();
         } catch (SQLException e){
            e.printStackTrace();
@@ -47,7 +72,6 @@ public class UserControllerImpl implements UserController{
         try (Connection connection = connector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_BY_ID)) {
             preparedStatement.setInt(1, index);
-            System.out.println(preparedStatement);
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
@@ -61,7 +85,7 @@ public class UserControllerImpl implements UserController{
                 String card_id = rs.getString("card_id");
                 String phone = rs.getString("phone");
                 String address = rs.getString("address");
-                user = new User(login_name, login_password, email, picture_url, gender, user_name,
+                user = new User(index, login_name, login_password, email, picture_url, gender, user_name,
                         user_dob, card_id, phone, address);
             }
         } catch (SQLException e) {
@@ -78,15 +102,38 @@ public class UserControllerImpl implements UserController{
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USERS_SQL);) {
             preparedStatement.setString(1, user.getLogin_name());
             preparedStatement.setString(2, user.getLogin_password());
-            preparedStatement.setString(3, user.getEmail());
-            preparedStatement.setString(4, user.getPicture_url());
+
+            if (user.getEmail() !="" ){
+                preparedStatement.setString(3, user.getEmail());
+            } else {
+                preparedStatement.setString(3, null);
+            }
+
+            if (user.getPicture_url() != "" ){
+                preparedStatement.setString(4, user.getPicture_url());
+            } else {
+                preparedStatement.setString(4, null);
+            }
+
             preparedStatement.setBoolean(5, user.isGender());
             preparedStatement.setString(6, user.getUser_name());
             preparedStatement.setString(7, user.getUser_dob());
-            preparedStatement.setString(8, user.getCard_id());
+
+            if (user.getCard_id() != "" ){
+                preparedStatement.setString(8, user.getCard_id());
+            } else {
+                preparedStatement.setString(8, null);
+            }
+
             preparedStatement.setString(9, user.getPhone());
-            preparedStatement.setString(10, user.getAddress());
+
+            if (user.getAddress() != "" ){
+                preparedStatement.setString(10, user.getAddress());
+            } else {
+                preparedStatement.setString(10, null);
+            }
             preparedStatement.setInt(11, user.getId());
+
         }catch (SQLException e) {
             e.printStackTrace();
         }
@@ -97,6 +144,7 @@ public class UserControllerImpl implements UserController{
         try ( Connection connection = connector.getConnection();
               PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);) {
             preparedStatement.setInt(1, index);
+            preparedStatement.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
