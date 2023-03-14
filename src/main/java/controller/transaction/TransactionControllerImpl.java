@@ -30,4 +30,9 @@ public class TransactionControllerImpl implements TransactionController{
     public void delete(int index) {
         //function 18
     }
+
+    @Override
+    public Transaction login(String userName, String password) {
+        return null;
+    }
 }

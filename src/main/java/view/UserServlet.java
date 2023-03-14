@@ -28,13 +28,18 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
-//                case "view":
-//                    find(request, response);
-//                    break;
+                case "login":
+                    showFormLogin(request, response);
+                    break;
             }
         } catch (Exception ex) {
             throw new ServletException(ex);
         }
+    }
+
+    private void showFormLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/login.jsp");
+        dispatcher.forward(request, response);
     }
 
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
@@ -72,13 +77,28 @@ public class UserServlet extends HttpServlet {
                 case "editProfile":
                     updateUser(request, response);
                     break;
-
-//                case "view":
-//                    showUserForm(request, response);
-//                    break;
+                case "login":
+                    loginProfile(request, response);
+                    break;
             }
         } catch (Exception ex) {
             throw new ServletException(ex);
+        }
+    }
+
+    private void loginProfile(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String login_name = request.getParameter("login_name");
+        String login_password = request.getParameter("login_password");
+        User user = userControllerImpl.login(login_name, login_password);
+
+        HttpSession session = request.getSession();
+        session.setAttribute("login_name", login_name);
+        session.setAttribute("login_password", login_password);
+
+        if(user == null){
+            response.sendRedirect("userAction/login.jsp");
+        } else {
+            response.sendRedirect("userAction/editProfile.jsp");
         }
     }
 

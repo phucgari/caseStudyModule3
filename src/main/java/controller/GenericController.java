@@ -14,4 +14,5 @@ public interface GenericController<E> {
     E showByIndex(int index);
     void update(E object);
     void delete(int index);
+    E login (String userName, String password);
 }

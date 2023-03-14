@@ -30,4 +30,9 @@ public class PlannedTransactionControllerImpl implements PlannedTransactionContr
     public void delete(int index) {
 
     }
+
+    @Override
+    public PlannedTransaction login(String userName, String password) {
+        return null;
+    }
 }

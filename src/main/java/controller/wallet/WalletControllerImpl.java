@@ -120,4 +120,9 @@ public class WalletControllerImpl implements WalletController{
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public Wallet login(String userName, String password) {
+        return null;
+    }
 }

@@ -40,19 +40,19 @@
                 </div>
             </div>
             <div class="card-body">
-                <form>
+                <form method="post">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="username">
+                        <input type="text" class="form-control" placeholder="username" name = "login_name">
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input type="password" class="form-control" placeholder="password" name="login_password">
                     </div>
                     <div class="row align-items-center remember">
                         <input type="checkbox">Remember Me
@@ -65,7 +65,7 @@
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
 
-                    Sign Up   Don't have an account?<a href="user?action=create">Sign Up</a>
+                    Sign Up   Don't have an account?<a href="create">Sign Up</a>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="#">Forgot your password?</a>
