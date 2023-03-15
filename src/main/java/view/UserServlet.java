@@ -70,6 +70,14 @@ public class UserServlet extends HttpServlet {
     private void deleteUser(HttpServletRequest request, HttpServletResponse response) {
         int id = (int) request.getSession().getAttribute("id");
         userControllerImpl.delete(id);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("http://localhost:8080/");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response){
