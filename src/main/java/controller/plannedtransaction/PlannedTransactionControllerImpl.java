@@ -28,6 +28,6 @@ public class PlannedTransactionControllerImpl implements PlannedTransactionContr
 
     @Override
     public void delete(int index) {
-
+        //function 18
     }
 }
