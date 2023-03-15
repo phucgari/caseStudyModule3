@@ -61,9 +61,10 @@
             <tr>
                 <th>Gender:</th>
                 <td>
-                    <input type="text" name="name" size="45"
-                           value="<c:out value='${user.gender}' />"
-                    />
+                    <select name="gender" id="gender" value='${user.gender}'>*
+                    <option value="1">Male</option>
+                    <option value="0">Female</option>
+                    </select>
                 </td>
             </tr>
             <tr>

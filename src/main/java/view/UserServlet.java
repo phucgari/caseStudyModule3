@@ -29,6 +29,8 @@ public class UserServlet extends HttpServlet {
                 case "delete":
                     deleteUser(request, response);
                     break;
+                case "login":
+                    showFormLogin(request, response);
                 default:
                     showUserProfile(request, response);
                     break;
@@ -48,6 +50,17 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher=request.getRequestDispatcher("userAction/profile.jsp");
         try {
             dispatcher.forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showFormLogin(HttpServletRequest request, HttpServletResponse response){
+        RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/login.jsp");
+        try {
+            dispatcher.forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -100,15 +113,37 @@ public class UserServlet extends HttpServlet {
                 case "editProfile":
                     updateUser(request, response);
                     break;
-
-//                case "view":
-//                    showUserForm(request, response);
-//                    break;
+                case "login":
+                    loginProfile(request, response);
+                    break;
             }
     }
+    private void loginProfile(HttpServletRequest request, HttpServletResponse response){
+        String login_name = request.getParameter("login_name");
+        String login_password = request.getParameter("login_password");
+        User user = userControllerImpl.login(login_name, login_password);
 
+        HttpSession session = request.getSession();
+        session.setAttribute("login_name", login_name);
+        session.setAttribute("login_password", login_password);
+
+        if(user == null){
+            try {
+                response.sendRedirect("userAction/login.jsp");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try {
+                response.sendRedirect("userAction/profile.jsp");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
     private void updateUser(HttpServletRequest request, HttpServletResponse response) {
         int id = (int) request.getSession().getAttribute("id");
+
         String login_name = request.getParameter("login_name");
         String login_password = request.getParameter("login_password");
         String email = request.getParameter("email");

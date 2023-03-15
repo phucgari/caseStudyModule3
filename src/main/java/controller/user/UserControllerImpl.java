@@ -1,5 +1,8 @@
 package controller.user;
+import com.mysql.cj.AbstractQuery;
 import model.User;
+
+import javax.servlet.http.HttpSession;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Collection;
@@ -13,7 +16,9 @@ public class UserControllerImpl implements UserController{
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_USERS_SQL = "update user set user.login_name = ?, user.login_password = ?, user.email = ?," +
             "user.picture_url = ?, user.gender = ?, user.user_name = ?, user.user_dob = ?, user.card_id = ?, user.phone = ?, user.address where user.id = ?;";
-    private static final String DELETE_USERS_SQL = "delete from user where user.id = ?;";
+    private static final String DELETE_USERS_SQL = "update user set user.disable=1 WHERE user.id=?;";
+    private static final String SELECT_USER = "select * from user where user.login_name = ? and user.login_password = ? ";
+
 
     public UserControllerImpl() {
     }
@@ -149,5 +154,34 @@ public class UserControllerImpl implements UserController{
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public User login(String login_name, String login_password) {
+        try ( Connection connection = connector.getConnection();
+              PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER);) {
+            preparedStatement.setString(1, login_name);
+            preparedStatement.setString(2, login_password);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            while (rs.next()) {
+                return new User(rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getBoolean(6),
+                        rs.getString(7),
+                        rs.getString(8),
+                        rs.getString(9),
+                        rs.getString(10),
+                        rs.getString(11)
+
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
