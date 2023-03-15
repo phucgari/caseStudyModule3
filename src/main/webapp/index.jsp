@@ -1,640 +1,194 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 14/03/2023
+  Time: 14:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-<!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!--Fontawesome CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-    <title>Nhóm 1</title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/templatemo-seo-dream.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <!--
-
-    TemplateMo 563 SEO Dream
-
-    https://templatemo.com/tm-563-seo-dream
-
-    -->
-
+    <!--Custom styles-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 <body>
+<!--Main Navigation-->
+<header>
+    <style>
+        #intro {
+            background-image: url("https://vieclamvui.com/upload/img/700/2020/10/27/nganh_tai_chinh_ngan_hang_vieclamvui_2_1603766664856.jpg");
+            height: 100vh;
+        }
 
-<!-- ***** Preloader Start ***** -->
-<div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-        <span class="dot"></span>
-        <div class="dots">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
-    </div>
-</div>
-<!-- ***** Preloader End ***** -->
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: -58.59px;
+            }
+        }
 
-<!-- ***** Header Area Start ***** -->
-<header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-        <div class="row">
-            <div class="col-12">
-                <nav class="main-nav">
-                    <!-- ***** Logo Start ***** -->
-                    <a href="index.html" class="logo">
-                        <h4> Quản Lý Tài Chính <img src="assets/images/logo-icon.png" alt=""></h4>
-                    </a>
-                    <!-- ***** Logo End ***** -->
-                    <!-- ***** Menu Start ***** -->
-                    <ul class="nav">
-                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
-                        <li class="scroll-to-section"><a href="#features">Wallet</a></li>
-                        <li class="scroll-to-section"><a href="#about">About Us</a></li>
-                        <li class="scroll-to-section"><a href="#services">Services</a></li>
-                        <li class="scroll-to-section"><a href="#portfolio">Portfolio</a></li>
-                        <li class="scroll-to-section"><a href="#contact">Contact Us</a></li>
-                        <li class="scroll-to-section"><div class="main-blue-button"><a href="#contact">Get Your Quote</a></div></li>
-                    </ul>
-                    <a class='menu-trigger'>
-                        <span>Menu</span>
-                    </a>
-                    <!-- ***** Menu End ***** -->
-                </nav>
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
+
+    <!-- Navbar -->
+
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container d-flex align-items-center justify-content-center text-center h-100">
+                <div class="text-white">
+                    <h1 class="mb-3">FINANCIAL MANAGERMENT</h1>
+                    <h5 class="mb-4">produced by group 1</h5>
+                    <a class="btn btn-outline-light btn-lg m-2" href="user?action=login">LOGIN</a>
+                    <a class="btn btn-outline-light btn-lg m-2" href="user?action=create">REGISTER</a>
+                </div>
             </div>
         </div>
     </div>
+    <!-- Background image -->
 </header>
-<!-- ***** Header Area End ***** -->
+<!--Main Navigation-->
 
-<div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
+<!--Main layout-->
+<main class="mt-5">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="row">
-                    <div class="col-lg-6 align-self-center">
-                        <div class="left-content header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                            <div class="row">
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="info-stat">
-                                        <h6>Agency Status:</h6>
-                                        <h4>Ready Work</h4>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="info-stat">
-                                        <h6>Price:</h6>
-                                        <h4>$720/Month</h4>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-sm-4">
-                                    <div class="info-stat">
-                                        <h6>Schedules</h6>
-                                        <h4>$450/Meeting</h4>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <h2>Quản Lý và Tài Chính</h2>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="main-green-button scroll-to-section">
-                                        <a href="#contact">Get Your Quote</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                            <img src="assets/images/banner-right-image.png" alt="">
-                        </div>
+        <!--Section: Content-->
+        <section>
+            <div class="row">
+                <div class="col-md-6 gx-5 mb-4">
+                    <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+                        <img src="https://www.wealthandfinance-news.com/wp-content/uploads/2021/07/Finance-technology.jpg" class="img-fluid" />
+                        <a href="#!">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div id="features" class="features section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="features-content">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="features-item first-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0s">
-                                <div class="first-number number">
-                                    <h6>01</h6>
-                                </div>
-                                <div class="icon"></div>
-                                <h4>Reach Out</h4>
-                                <div class="line-dec"></div>
-                                <p>This HTML5 template is based on Bootstrap 5 CSS. You are free to customize anything.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="features-item second-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s">
-                                <div class="second-number number">
-                                    <h6>02</h6>
-                                </div>
-                                <div class="icon"></div>
-                                <h4>Develop a Strategy</h4>
-                                <div class="line-dec"></div>
-                                <p>Lorem ipsum dolor sit ameter consectetur adipiscing li elit sed do eiusmod.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="features-item first-feature wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="third-number number">
-                                    <h6>03</h6>
-                                </div>
-                                <div class="icon"></div>
-                                <h4>Implementation</h4>
-                                <div class="line-dec"></div>
-                                <p>If this template is useful for your website, please consider to <a rel="nofollow" href="https://www.paypal.me/templatemo" target="_blank">support us</a> a little.</p>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="features-item second-feature last-features-item wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-                                <div class="fourth-number number">
-                                    <h6>04</h6>
-                                </div>
-                                <div class="icon"></div>
-                                <h4>Analyze the result</h4>
-                                <div class="line-dec"></div>
-                                <p>Below circular progress bar animation supports those CSS values 10, 20, 30, till 100.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-md-6 gx-5 mb-4">
+                    <h4><strong><a href="https://www.wealthandfinance-news.com/the-history-of-finance-and-what-the-digital-future-holds/">Where Currency First Began</a></strong></h4>
+                    <p class="text-muted">
+                        The term of currency is broad, but its roots can be tracked down to the caveman,
+                        who could have given someone something they held valuable, such as a shiny rock,
+                        for some meat that another had hunted.
+                    </p>
+                    <p><strong>How Assets Were Important</strong></p>
+                    <p class="text-muted">
+                        Physical assets have been important to the financial world for a number of years.
+                        When thinking of assets, you can think of gold bars, which are often held by banks
+                        and governments in vaults to accrue interest and hold something of value to strengthen
+                        their financial capital. Most people will hold some sort of asset, whether that be something
+                        trivial such as vintage memorabilia, or something more concrete, such as property.
+                    </p>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div class="skills-content">
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0s">
-                                <div class="progress" data-percentage="80">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <div class="progress-value">
-                                        <div>
-                                            80%<br>
-                                            <span>HTML/CSS/JS</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                                <div class="progress" data-percentage="60">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <div class="progress-value">
-                                        <div>
-                                            60%<br>
-                                            <span>Wordpress</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s">
-                                <div class="progress" data-percentage="90">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <div class="progress-value">
-                                        <div>
-                                            90%<br>
-                                            <span>Marketing</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3">
-                            <div class="skill-item last-skill-item wow fadeIn" data-wow-duration="1s" data-wow-delay="0.6s">
-                                <div class="progress" data-percentage="70">
-                    <span class="progress-left">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <span class="progress-right">
-                      <span class="progress-bar"></span>
-                    </span>
-                                    <div class="progress-value">
-                                        <div>
-                                            70%<br>
-                                            <span>Photoshop</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        </section>
 
-<div id="about" class="about-us section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="left-image wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-                    <img src="assets/images/about-left-image.png" alt="">
-                </div>
-            </div>
-            <div class="col-lg-6 align-self-center wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <div class="section-heading">
-                    <h6>About Us</h6>
-                    <h2>Top <em>marketing</em> agency &amp; consult your website <span>with us</span></h2>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-4">
-                        <div class="about-item">
-                            <h4>750+</h4>
-                            <h6>projects finished</h6>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-4">
-                        <div class="about-item">
-                            <h4>340+</h4>
-                            <h6>happy clients</h6>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-4">
-                        <div class="about-item">
-                            <h4>128+</h4>
-                            <h6>awards</h6>
-                        </div>
-                    </div>
-                </div>
-                <p><a rel="nofollow" href="https://templatemo.com/tm-563-seo-dream" target="_parent">SEO Dream</a> is free digital marketing CSS template provided by TemplateMo website. You are allowed to use this template for your business websites. Please DO NOT redistribute this template ZIP file on any Free CSS collection websites. You may contact us for more information. Thank you.</p>
-                <div class="main-green-button"><a href="#">Discover company</a></div>
-            </div>
-        </div>
-    </div>
-</div>
+        <!--Section: Content-->
+        <section class="text-center">
+            <h4 class="mb-5"><strong>Related information</strong></h4>
 
-<div id="services" class="our-services section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 offset-lg-3">
-                <div class="section-heading wow bounceIn" data-wow-duration="1s" data-wow-delay="0.2s">
-                    <h6>Our Services</h6>
-                    <h2>Discover What We Do &amp; <span>Offer</span> To Our <em>Clients</em></h2>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.3s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-01.png" alt="">
-                            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://kinhtechungkhoan.vn/stores/news_dataimages/2023/022023/22/14/croped/co-phieu-ngan-hang20230222143949.jpg?230222033505" class="img-fluid" style="height: 250px" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
                         </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Similar Websites</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Bank</h5>
+                            <p class="card-text">
+                                A bank is a financial institution that accepts deposits from the public and creates a
+                                demand deposit while simultaneously making loans.
+                            </p>
+                            <a href="https://en.wikipedia.org/wiki/Bank" class="btn btn-primary">see more</a>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.4s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-02.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Website Trends</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.5s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-03.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Traffic Analysis</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.6s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-03.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Optimizing Keywords</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.7s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-01.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Page Optimizations</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="service-item wow bounceInUp" data-wow-duration="1s" data-wow-delay="0.8s">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <div class="icon">
-                                <img src="assets/images/service-icon-02.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="right-content">
-                                <h4>Deep URL Analysis</h4>
-                                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dormque laudantium.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div id="portfolio" class="our-portfolio section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="section-heading wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
-                    <h6>Our Portofolio</h6>
-                    <h2>Discover Our Recent <em>Projects</em> And <span>Showcases</span></h2>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://bcp.cdnchinhphu.vn/334894974524682240/2023/3/13/san-chung-khoan-la-gi-16786796205201405665574.jpeg" class="img-fluid" style="height: 250px" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Stock</h5>
+                            <p class="card-text">
+                                In finance, stock (also capital stock) consists of all the shares by which ownership
+                                of a corporation or company is divided.
+                            </p>
+                            <a href="https://en.wikipedia.org/wiki/Stock" class="btn btn-primary">see more</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid wow fadeIn" data-wow-duration="1s" data-wow-delay="0.7s">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="loop owl-carousel">
-                    <div class="item">
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-01.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 101</h4></a>
-                                        <span>Marketing</span>
-                                    </div>
-                                </div>
-                            </div>
+
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="https://media.vneconomy.vn/w800/images/upload/2021/10/07/chung-khoan.jpeg" class="img-fluid" style="height: 250px" />
+                            <a href="#!">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
                         </div>
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-04.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 102</h4></a>
-                                        <span>Branding</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-02.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 103</h4></a>
-                                        <span>Consulting</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-05.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 104</h4></a>
-                                        <span>Artwork</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-03.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 105</h4></a>
-                                        <span>Branding</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-06.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 106</h4></a>
-                                        <span>Artwork</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-04.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 107</h4></a>
-                                        <span>Creative</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="thumb">
-                                <img src="assets/images/portfolio-01.jpg" alt="">
-                                <div class="hover-content">
-                                    <div class="inner-content">
-                                        <a href="#"><h4>Awesome Project 108</h4></a>
-                                        <span>Consulting</span>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Macroeconomics</h5>
+                            <p class="card-text">
+                                Macroeconomics is a branch of economics that deals with the performance, structure,
+                                behavior, and decision-making of an economy as a whole.
+                            </p>
+                            <a href="https://en.wikipedia.org/wiki/Macroeconomics" class="btn btn-primary">see more</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <hr class="my-5" />
+
     </div>
-</div>
+</main>
+<!--Main layout-->
 
-<%--<div id="contact" class="contact-us section">--%>
-<%--    <div class="container">--%>
-<%--        <div class="row">--%>
-<%--            <div class="col-lg-12 wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.25s">--%>
-<%--                <form id="contact" action="" method="post">--%>
-<%--                    <div class="row">--%>
-<%--                        <div class="col-lg-6 offset-lg-3">--%>
-<%--                            <div class="section-heading">--%>
-<%--                                <h6>Contact Us</h6>--%>
-<%--                                <h2>Fill Out The Form Below To <span>Get</span> In <em>Touch</em> With Us</h2>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-lg-9">--%>
-<%--                            <div class="row">--%>
-<%--                                <div class="col-lg-6">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <input type="name" name="name" id="name" placeholder="Name" autocomplete="on" required>--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-lg-6">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <input type="surname" name="surname" id="surname" placeholder="Surname" autocomplete="on" required>--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-lg-6">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required="">--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-lg-6">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <input type="subject" name="subject" id="subject" placeholder="Subject" autocomplete="on">--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-lg-12">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <textarea name="message" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                                <div class="col-lg-12">--%>
-<%--                                    <fieldset>--%>
-<%--                                        <button type="submit" id="form-submit" class="main-button ">Send Message Now</button>--%>
-<%--                                    </fieldset>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="col-lg-3">--%>
-<%--                            <div class="contact-info">--%>
-<%--                                <ul>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="icon">--%>
-<%--                                            <img src="assets/images/contact-icon-01.png" alt="email icon">--%>
-<%--                                        </div>--%>
-<%--                                        <a href="#">info@company.com</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="icon">--%>
-<%--                                            <img src="assets/images/contact-icon-02.png" alt="phone">--%>
-<%--                                        </div>--%>
-<%--                                        <a href="#">+001-002-0034</a>--%>
-<%--                                    </li>--%>
-<%--                                    <li>--%>
-<%--                                        <div class="icon">--%>
-<%--                                            <img src="assets/images/contact-icon-03.png" alt="location">--%>
-<%--                                        </div>--%>
-<%--                                        <a href="#">26th Street, Digital Villa</a>--%>
-<%--                                    </li>--%>
-<%--                                </ul>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
-<%--                </form>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
+<!--Footer-->
+<footer class="bg-light text-lg-start">
+    <hr class="m-0" />
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Copyright © 2021 SEO Dream Co., Ltd. All Rights Reserved.
-
-                    <br>Web Designed by <a rel="nofollow" href="https://templatemo.com" title="free CSS templates">TemplateMo</a></p>
-            </div>
-        </div>
+    <div class="text-center py-4 align-items-center">
+        <p>Follow Hoàng on social media</p>
+        <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
+           rel="nofollow" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
+           target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
     </div>
+
 </footer>
-
-<!-- Scripts -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/owl-carousel.js"></script>
-<script src="assets/js/animation.js"></script>
-<script src="assets/js/imagesloaded.js"></script>
-<script src="assets/js/custom.js"></script>
 
 </body>
 </html>
