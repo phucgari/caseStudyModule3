@@ -139,8 +139,8 @@
                                 <th>Gender:</th>
                                 <td>
                                     <select name="gender" id="gender" value='${user.gender}'>*
-                                        <option value="1">Male</option>
-                                        <option value="0">Female</option>
+                                        <option value="true">Male</option>
+                                        <option value="false">Female</option>
                                     </select>
                                 </td>
                             </tr>
