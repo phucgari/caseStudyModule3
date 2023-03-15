@@ -172,7 +172,7 @@ public class UserControllerImpl implements UserController {
                         rs.getString(5),
                         rs.getBoolean(6),
                         rs.getString(7),
-                        rs.getDate(8).toLocalDate(),
+                        rs.getDate("user_dob") == null ? null : rs.getDate("user_dob").toLocalDate(),
                         rs.getString(9),
                         rs.getString(10),
                         rs.getString(11)
