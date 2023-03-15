@@ -12,9 +12,6 @@
     <title>Edit User</title>
 </head>
 <body>
-<center>
-    <h1>Edit User</h1>
-</center>
 <div align="center">
     <form method="post">
         <table border="1" cellpadding="5">
@@ -29,7 +26,7 @@
             <tr>
                 <th>Login name:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="login_name" size="45"
                            value="<c:out value='${user.login_name}' />"
                     />
                 </td>
@@ -37,7 +34,7 @@
             <tr>
                 <th>Login password:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="login_password" size="45"
                            value="<c:out value='${user.login_password}' />"
                     />
                 </td>
@@ -53,7 +50,7 @@
             <tr>
                 <th>Picture url:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="picture_url" size="45"
                            value="<c:out value='${user.picture_url}' />"
                     />
                 </td>
@@ -70,7 +67,7 @@
             <tr>
                 <th>User Name:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="user_name" size="45"
                            value="<c:out value='${user.user_name}' />"
                     />
                 </td>
@@ -78,7 +75,7 @@
             <tr>
                 <th>User dob:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="user_dob" size="45"
                            value="<c:out value='${user.user_dob}' />"
                     />
                 </td>
@@ -86,7 +83,7 @@
             <tr>
                 <th>Card id:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="card_id" size="45"
                            value="<c:out value='${user.card_id}' />"
                     />
                 </td>
@@ -94,7 +91,7 @@
             <tr>
                 <th>Phone:</th>
                 <td>
-                    <input type="text" name="country" size="15"
+                    <input type="text" name="phone" size="15"
                            value="<c:out value='${user.phone}' />"
                     />
                 </td>
@@ -102,7 +99,7 @@
             <tr>
                 <th>Address:</th>
                 <td>
-                    <input type="text" name="name" size="45"
+                    <input type="text" name="address" size="45"
                            value="<c:out value='${user.address}' />"
                     />
                 </td>
