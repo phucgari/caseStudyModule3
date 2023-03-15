@@ -19,28 +19,27 @@ public class UserServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-            switch (action) {
-                case "create":
-                    showNewForm(request, response);
-                    break;
-                case "editProfile":
-                    showEditForm(request, response);
-                    break;
-                case "delete":
-                    deleteUser(request, response);
-                    break;
-                case "login":
-                    showFormLogin(request, response);
-                default:
-                    showUserProfile(request, response);
-                    break;
-            }
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+            case "editProfile":
+                showEditForm(request, response);
+                break;
+            case "delete":
+                deleteUser(request, response);
+                break;
+            case "login":
+                showFormLogin(request, response);
+                break;
+            default:
+                showUserProfile(request, response);
+                break;
+        }
     }
 
     private void showUserProfile(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session=request.getSession();
-        session.setAttribute("id",2);
-        session.setAttribute("login_name","phuc1");
         int id= (int) session.getAttribute("id");
         String login_name= (String) session.getAttribute("login_name");
         request.setAttribute("login_name",login_name);
@@ -106,17 +105,17 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
 
-            switch (action) {
-                case "create":
-                    createUser(request, response);
-                    break;
-                case "editProfile":
-                    updateUser(request, response);
-                    break;
-                case "login":
-                    loginProfile(request, response);
-                    break;
-            }
+        switch (action) {
+            case "create":
+                createUser(request, response);
+                break;
+            case "editProfile":
+                updateUser(request, response);
+                break;
+            case "login":
+                loginProfile(request, response);
+                break;
+        }
     }
     private void loginProfile(HttpServletRequest request, HttpServletResponse response){
         String login_name = request.getParameter("login_name");
@@ -125,17 +124,17 @@ public class UserServlet extends HttpServlet {
 
         HttpSession session = request.getSession();
         session.setAttribute("login_name", login_name);
-        session.setAttribute("login_password", login_password);
 
         if(user == null){
             try {
-                response.sendRedirect("userAction/login.jsp");
+                response.sendRedirect("user?action=login");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             try {
                 response.sendRedirect("userAction/profile.jsp");
+                session.setAttribute("id", user.getId());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
