@@ -12,7 +12,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<!DOCTYPE html>
 <html>
 <head>
     <title>Login Page</title>
@@ -28,51 +27,159 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>Sign In</h3>
-                <div class="d-flex justify-content-end social_icon">
-                    <span><i class="fab fa-facebook-square"></i></span>
-                    <span><i class="fab fa-google-plus-square"></i></span>
-                    <span><i class="fab fa-twitter-square"></i></span>
-                </div>
-            </div>
-            <div class="card-body">
-                <form>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-user"></i></span>
-                        </div>
-                        <input type="text" class="form-control" placeholder="username">
+<!--Main Navigation-->
+<header>
+    <style>
+        #intro {
+            background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+            height: 100vh;
+        }
 
-                    </div>
-                    <div class="input-group form-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fas fa-key"></i></span>
-                        </div>
-                        <input type="password" class="form-control" placeholder="password">
-                    </div>
-                    <div class="row align-items-center remember">
-                        <input type="checkbox">Remember Me
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn">
-                    </div>
-                </form>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: -58.59px;
+            }
+        }
 
-                    Sign Up   Don't have an account?<a href="user?action=create">Sign Up</a>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a href="#">Forgot your password?</a>
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+        <div class="container-fluid">
+            <!-- Navbar brand -->
+            <a class="navbar-brand nav-link" href="http://localhost:8080/">
+                <strong>Home</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+                    aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarExample01">
+                <ul class="navbar-nav d-flex flex-row">
+                    <!-- Icons -->
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                           target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item me-3 me-lg-0">
+                        <a class="nav-link" href="https://github.com/mdbootstrap/mdb-ui-kit" rel="nofollow" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Background image -->
+    <div id="intro" class="bg-image shadow-2-strong">
+        <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-xl-5 col-md-8">
+                        <form class="bg-white  rounded-5 shadow-5-strong p-5" method="post">
+                            <div class="form-outline mb-4">
+                                <center><h2 >Login</h2></center>
+                            </div>
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="login_name" name="login_name" class="form-control" />
+                                <label class="form-label" for="login_name">User name</label>
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="login_password" name="login_password" class="form-control" />
+                                <label class="form-label" for="login_password">Password</label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+
+                            <div class="row mb-4">
+                                <div class="col d-flex justify-content-center">
+                                    <!-- Checkbox -->
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="form1Example3" checked />
+                                        <label class="form-check-label" for="form1Example3">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col text-center">
+                                    <!-- Simple link -->
+                                    <a href="user?action=create">Or sign up ?</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <!-- Background image -->
+</header>
+<!--Main Navigation-->
+
+<!--Footer-->
+<%--<footer class="bg-light text-lg-start">--%>
+<%--    <div class="py-4 text-center">--%>
+<%--        <a role="button" class="btn btn-primary btn-lg m-2"--%>
+<%--           href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow" target="_blank">--%>
+<%--            Learn Bootstrap 5--%>
+<%--        </a>--%>
+<%--        <a role="button" class="btn btn-primary btn-lg m-2" href="https://mdbootstrap.com/docs/standard/" target="_blank">--%>
+<%--            Download MDB UI KIT--%>
+<%--        </a>--%>
+<%--    </div>--%>
+
+<%--    <hr class="m-0" />--%>
+
+<%--    <div class="text-center py-4 align-items-center">--%>
+<%--        <p>Follow MDB on social media</p>--%>
+<%--        <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"--%>
+<%--           rel="nofollow" target="_blank">--%>
+<%--            <i class="fab fa-youtube"></i>--%>
+<%--        </a>--%>
+<%--        <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"--%>
+<%--           target="_blank">--%>
+<%--            <i class="fab fa-facebook-f"></i>--%>
+<%--        </a>--%>
+<%--        <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"--%>
+<%--           target="_blank">--%>
+<%--            <i class="fab fa-twitter"></i>--%>
+<%--        </a>--%>
+<%--        <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"--%>
+<%--           target="_blank">--%>
+<%--            <i class="fab fa-github"></i>--%>
+<%--        </a>--%>
+<%--    </div>--%>
+
+<%--    <!-- Copyright -->--%>
+<%--    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">--%>
+<%--        © 2020 Copyright:--%>
+<%--        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>--%>
+<%--    </div>--%>
+<%--    <!-- Copyright -->--%>
+<%--</footer>--%>
+<!--Footer-->
 </body>
 </html>
