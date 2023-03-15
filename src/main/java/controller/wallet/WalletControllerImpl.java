@@ -22,6 +22,7 @@ public class WalletControllerImpl implements WalletController{
     private static final String CREATE_A_WALLET="insert into wallet(name,balance,user_id) values (?,?,?)";
     private static final String UPDATE_A_WALLET="update wallet set name=?,balance=? where id=?";
     private static final String DELETE_A_WALLET="update wallet set disable=1 WHERE id=?";
+    private static final String FIND_A_WALLET_BY_ID="select * from wallet where id=?";
 
     @Override
     public ArrayList<Wallet> showAll() {
@@ -92,7 +93,21 @@ public class WalletControllerImpl implements WalletController{
 
     @Override
     public Wallet showByIndex(int index) {
-        return null;
+        Wallet result;
+        try(Connection connection=connector.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(FIND_A_WALLET_BY_ID)) {
+            preparedStatement.setInt(1,index);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            resultSet.next();
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            long balance = resultSet.getLong("balance");
+            User userId = new User(resultSet.getInt("user_id"));
+            result=new Wallet(id, name, balance, userId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return result;
     }
 
     @Override
