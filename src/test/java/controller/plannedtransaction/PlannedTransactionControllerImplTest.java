@@ -56,4 +56,11 @@ class PlannedTransactionControllerImplTest {
         list=plannedTransactionController.showPlannedTransactionOnDemand(2,0,999999999999L);
         assertEquals("[]",list.toString());
     }
+    @Test
+    void testFindPlannedTransactionByID(){
+        PlannedTransaction plannedTransaction=plannedTransactionController.showByIndex(1);
+        assertEquals("PlannedTransaction{id=1, action='mua cay dao', money_Amount=70000, user_id=User{id=1, login_name='null', login_password='null', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}",plannedTransaction.toString());
+        plannedTransaction=plannedTransactionController.showByIndex(2);
+        assertEquals("PlannedTransaction{id=2, action='mua TV', money_Amount=200000, user_id=User{id=2, login_name='null', login_password='null', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}",plannedTransaction.toString());
+    }
 }
