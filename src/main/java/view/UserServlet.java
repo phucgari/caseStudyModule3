@@ -19,24 +19,22 @@ public class UserServlet extends HttpServlet {
         if (action == null) {
             action = "";
         }
-            switch (action) {
-                case "create":
-                    showNewForm(request, response);
-                    break;
-                case "editProfile":
-                    showEditForm(request, response);
-                    break;
-                case "delete":
-                    deleteUser(request, response);
-                    break;
-                case "login":
-                    showFormLogin(request, response);
-                    break;
-                default:
-                    showUserProfile(request, response);
-
-                    break;
-            }
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+            case "editProfile":
+                showEditForm(request, response);
+                break;
+            case "delete":
+                deleteUser(request, response);
+                break;
+            case "login":
+                showFormLogin(request, response);
+            default:
+                showUserProfile(request, response);
+                break;
+        }
     }
 
     private void showUserProfile(HttpServletRequest request, HttpServletResponse response) {
@@ -52,16 +50,20 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher=request.getRequestDispatcher("userAction/profile.jsp");
         try {
             dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void showFormLogin(HttpServletRequest request, HttpServletResponse response) {
+    private void showFormLogin(HttpServletRequest request, HttpServletResponse response){
         RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/login.jsp");
         try {
-            dispatcher.forward(request,response);
-        } catch (ServletException | IOException e) {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -78,7 +80,9 @@ public class UserServlet extends HttpServlet {
         request.setAttribute("user", existingUser);
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -88,7 +92,9 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/register.jsp");
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -100,46 +106,44 @@ public class UserServlet extends HttpServlet {
             action = "";
         }
 
-            switch (action) {
-                case "create":
-                    createUser(request, response);
-                    break;
-                case "editProfile":
-                    updateUser(request, response);
-                    break;
-                case "login":
-                    loginProfile(request, response);
-                    break;
-            }
+        switch (action) {
+            case "create":
+                createUser(request, response);
+                break;
+            case "editProfile":
+                updateUser(request, response);
+                break;
+            case "login":
+                loginProfile(request, response);
+                break;
+        }
     }
-
-    private void loginProfile(HttpServletRequest request, HttpServletResponse response) {
+    private void loginProfile(HttpServletRequest request, HttpServletResponse response){
         String login_name = request.getParameter("login_name");
         String login_password = request.getParameter("login_password");
         User user = userControllerImpl.login(login_name, login_password);
 
         HttpSession session = request.getSession();
         session.setAttribute("login_name", login_name);
-        session.setAttribute("id", login_password);
+        session.setAttribute("login_password", login_password);
 
         if(user == null){
             try {
-                response.sendRedirect("user?action=login");
+                response.sendRedirect("userAction/login.jsp");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         } else {
             try {
                 response.sendRedirect("userAction/profile.jsp");
-                session.setAttribute("id", user.getId());
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
     }
+    private void updateUser(HttpServletRequest request, HttpServletResponse response) {
+        int id = (int) request.getSession().getAttribute("id");
 
-    private void updateUser(HttpServletRequest request, HttpServletResponse response){
-        int id = Integer.parseInt(request.getParameter("id"));
         String login_name = request.getParameter("login_name");
         String login_password = request.getParameter("login_password");
         String email = request.getParameter("email");
@@ -156,7 +160,9 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/editProfile.jsp");
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
@@ -178,7 +184,9 @@ public class UserServlet extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("userAction/register.jsp");
         try {
             dispatcher.forward(request, response);
-        } catch (ServletException | IOException e) {
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
