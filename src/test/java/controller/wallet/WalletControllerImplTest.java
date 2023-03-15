@@ -88,4 +88,11 @@ class WalletControllerImplTest {
                 "Wallet{id=4, name='dau tu', balance=2200000, user_id=User{id=1, login_name='phuc1', login_password='phuc1password', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}, " +
                 "Wallet{id=5, name='tieu vat', balance=100000, user_id=User{id=1, login_name='phuc1', login_password='phuc1password', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}]",wallets.toString());
     }
+    @Test
+    void testGetByID(){
+        Wallet wallet=walletController.showByIndex(1);
+        assertEquals("Wallet{id=1, name='tieu dung', balance=130000, user_id=User{id=1, login_name='null', login_password='null', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}",wallet.toString());
+        wallet=walletController.showByIndex(2);
+        assertEquals("Wallet{id=2, name='vi', balance=190000, user_id=User{id=2, login_name='null', login_password='null', email='null', picture_url='null', gender=false, user_name='null', user_dob=null, card_id='null', phone='null', address='null'}}",wallet.toString());
+    }
 }
