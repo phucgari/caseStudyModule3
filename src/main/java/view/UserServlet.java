@@ -133,7 +133,7 @@ public class UserServlet extends HttpServlet {
             }
         } else {
             try {
-                response.sendRedirect("userAction/profile.jsp");
+                response.sendRedirect("user");
                 session.setAttribute("id", user.getId());
             } catch (IOException e) {
                 throw new RuntimeException(e);
