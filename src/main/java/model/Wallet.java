@@ -6,7 +6,11 @@ public class Wallet {
     private long balance;
     private User user_id;
 
-    public Wallet() {
+    public Wallet(String walletId) {
+    }
+
+    public Wallet(int id) {
+        this.id = id;
     }
 
     public Wallet(int id, String name, long balance, User user_id) {
