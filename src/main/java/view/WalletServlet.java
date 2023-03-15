@@ -67,21 +67,34 @@ public class WalletServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String action=request.getParameter("action");
         switch(action) {
             case "create":
                 createNewWallet(request, response);
                 break;
+            case "edit":
+                editWallet(request,response);
         }
     }
 
-    private void createNewWallet(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session=request.getSession();
+    private void editWallet(HttpServletRequest request, HttpServletResponse response) {
+        Wallet wallet = getWallet(request);
+        walletController.update(wallet);
+        showALlWallet(request, response);
+    }
+
+    private static Wallet getWallet(HttpServletRequest request) {
+        HttpSession session= request.getSession();
         int id= (int) session.getAttribute("id");
-        String name=request.getParameter("name");
+        String name= request.getParameter("name");
         long balance= Long.parseLong(request.getParameter("balance"));
-        Wallet wallet=new Wallet(name,balance, new User(id));
+        Wallet wallet=new Wallet(name,balance,new User(id));
+        return wallet;
+    }
+
+    private void createNewWallet(HttpServletRequest request, HttpServletResponse response) {
+        Wallet wallet = getWallet(request);
         walletController.create(wallet);
         showALlWallet(request,response);
     }
