@@ -6,9 +6,6 @@ public class Wallet {
     private long balance;
     private User user_id;
 
-    public Wallet(String walletId) {
-    }
-
     public Wallet(int id) {
         this.id = id;
     }

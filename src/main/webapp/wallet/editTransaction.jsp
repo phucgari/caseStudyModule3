@@ -29,7 +29,7 @@
             <tr>
                 <th>time</th>
                 <td>
-                    <input type="text" name="time" size="60"
+                    <input type="datetime-local" name="time" id="meeting-time"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="60"
                     value = "<c:out value='${transaction.time}'/>">
                 </td>
             </tr>

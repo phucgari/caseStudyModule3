@@ -20,7 +20,8 @@
             <tr>
                 <th>time</th>
                 <td>
-                    <input type="text" name="time" id="time" size="60"/> *
+                    <input type="datetime-local" name="time" id="meeting-time" value="2018-06-12T19:30"
+                           min="2018-06-07T00:00" max="2024-06-14T00:00" size="60"/> *
                 </td>
             </tr>
             <tr>
