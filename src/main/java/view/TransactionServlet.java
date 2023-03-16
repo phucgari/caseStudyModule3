@@ -11,7 +11,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.ResultSet;
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -35,18 +39,27 @@ public class TransactionServlet extends HttpServlet {
                 showEditForm(request, response);
                 break;
             default:
-                showAllTransaction(request, response);
+                showTransaction(request, response);
         }
     }
 
-    private void showAllTransaction(HttpServletRequest request, HttpServletResponse response) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
-        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
-        String action = request.getParameter("action");
-        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
-        Wallet wallet_id = new Wallet(walletId);
-        Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
+    private void showTransaction(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session = request.getSession();
+        int id = (int) session.getAttribute("id");
+        LocalDateTime timeStart = LocalDateTime.parse((request.getParameter("timeStart")));
+        LocalDateTime timeEnd = LocalDateTime.parse((request.getParameter("timeEnd")));
+        Long moneyStart = Long.valueOf(request.getParameter("moneyStart"));
+        Long moneyEnd = Long.valueOf(request.getParameter("moneyEnd"));
+        ArrayList<Transaction> transactions = transactionController.ShowTransactionOnDemand(id, timeStart, timeEnd, moneyStart, moneyEnd);
+        request.setAttribute("transaction", transactions);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/showAllTransactions.jsp");
+        try {
+            requestDispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) {

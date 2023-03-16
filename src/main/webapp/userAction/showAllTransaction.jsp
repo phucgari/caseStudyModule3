@@ -51,10 +51,12 @@
             <form method="get">
                 <div class="row">
                     <div class="col-5">
-                        <input type="number" placeholder="Minimum Money_amount" class="inputlg form-control" name="money_start">
+                        <input type="datetime-local" name="timeStart" id="timeStart"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
+                               value = "<c:out value='2018-06-07T00:00'/>">
                     </div>
                     <div class="col-5">
-                        <input type="number" placeholder="Maximum Money_amount" class="inputlg form-control" name="money_end">
+                        <input type="datetime-local" name="timeEnd" id="timeEnd"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
+                               value = "<c:out value='2024-06-14T00:00'/>">
                     </div>
                     <div class="col-2">
                         <span class="input-group-btn"><button type="submit" class="btn btn-sm btn-success"> search</button> </span>
@@ -71,17 +73,20 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${requestScope['list']}" var="plannedTransaction">
+            <c:forEach items="${requestScope['list']}" var="transaction">
                 <tr>
                     <td class="p-name">
-                        <h4 href="project_details.html">${plannedTransaction.getAction()}</h4>
+                        <h4 href="project_details.html">${transaction.getAction()}</h4>
                     </td>
                     <td>
-                        <span class="">${plannedTransaction.getMoney_Amount()}</span>
+                        <span class="">${transaction.getMoney_Amount()}</span>
                     </td>
                     <td>
-                        <a href="/plannedtransaction?action=edit&id=${plannedTransaction.getId()}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                        <a href="/plannedtransaction?action=delete&id=${plannedTransaction.getId()}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                        <span class="">${transaction.getTime()}</span>
+                    </td>
+                    <td>
+                        <a href="/transaction?action=edit&id=${transaction.getId()}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                        <a href="/transaction?action=delete&id=${transaction.getId()}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                     </td>
                 </tr>
             </c:forEach>
