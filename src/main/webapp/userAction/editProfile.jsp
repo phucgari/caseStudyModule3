@@ -24,27 +24,26 @@
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
+        #intro {
+            background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+            height: 100vh;
+        }
+
+        /* Height for devices larger than 576px */
+        @media (min-width: 992px) {
+            #intro {
+                margin-top: -58.59px;
+            }
+        }
+
+        .navbar .nav-link {
+            color: #fff !important;
+        }
+    </style>
+
 </head>
 <body>
-<style>
-    #intro {
-        background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
-        height: 100vh;
-    }
 
-    /* Height for devices larger than 576px */
-    @media (min-width: 992px) {
-        #intro {
-            margin-top: -58.59px;
-        }
-    }
-
-    .navbar .nav-link {
-        color: #fff !important;
-    }
-</style>
-
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
     <div class="container-fluid">
         <!-- Navbar brand -->
@@ -153,8 +152,9 @@
                             <tr>
                                 <th>User dob:</th>
                                 <td>
-                                    <input type="text" name="user_dob" size="35"
-                                           value="<c:out value='${user.user_dob}' />"
+                                    <input type="date" id="user_dob" name="user_dob"
+                                           value="${user.user_dob}"
+                                           min="1900-01-01" max="2100-01-01"
                                     />
                                 </td>
                             </tr>
@@ -184,7 +184,8 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Save"/>
+                                    <button class="btn btn-primary btn-block" type="submit" value="Save"
+                                            onclick="confirmUpdate()"> save </button>
                                 </td>
                             </tr>
                             <tr>
@@ -199,3 +200,12 @@
         </div>
     </div>
 </div>
+</body>
+<script>
+    function confirmUpdate() {
+        if(confirm("Successfully updated personal information")){
+            window.location = "http://localhost:8080/user"
+        }
+            }
+</script>
+</html>

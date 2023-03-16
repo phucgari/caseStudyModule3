@@ -11,45 +11,124 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 @WebServlet(name = "TransactionServlet", value = "/transaction")
 public class TransactionServlet extends HttpServlet {
-    private TransactionControllerImpl transactionController = new TransactionControllerImpl();
+    private final TransactionControllerImpl transactionController = new TransactionControllerImpl();
+
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         String action = request.getParameter("action");
         if (action == null) {
             action = "";
         }
-        try {
-            switch (action) {
-                case "create":
-                    showNewForm(request, response);
-                    break;
-                case "editTransaction":
-                    showEditForm(request, response);
-                    break;
-            }
-        }catch (Exception e){
-            throw new ServletException(e);
+        switch (action) {
+            case "create":
+                showNewForm(request, response);
+                break;
+            case "edit":
+                showEditForm(request, response);
+                break;
+            default:
+                showAllTransaction(request, response);
         }
     }
-    private void showNewForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/createTransaction.jsp");
-        dispatcher.forward(request, response);
-    }
-    private void showEditForm(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
+
+    private void showAllTransaction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        ArrayList<Transaction> existingWallet = transactionController.showAllTransactionById(id);
+        LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
+        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
+        String action = request.getParameter("action");
+        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
+        Wallet wallet_id = new Wallet(walletId);
+        Transaction transaction = new Transaction(id,time, money_Amount, action, wallet_id);
+//        tutututtutututu
+
+//        tututututututut
+    }
+
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response) {
+        RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/createTransaction.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Transaction existingTransaction = transactionController.showByIndex(id);
         RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/editTransaction.jsp");
-        request.setAttribute("wallet",existingWallet);
-        dispatcher.forward(request, response);
+        request.setAttribute("wallet", existingTransaction);
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        String action = request.getParameter("action");
+        if (action == null) {
+            action = "";
+        }
+        switch (action) {
+            case "create":
+                createTransaction(request, response);
+                break;
+            case "edit":
+                updateTransaction(request, response);
+                break;
+        }
+
+    }
+
+    private void createTransaction(HttpServletRequest request, HttpServletResponse response) {
+        LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
+        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
+        String action = request.getParameter("action");
+        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
+        Wallet wallet_id = new Wallet(walletId);
+        Transaction transaction = new Transaction(time, money_Amount, action, wallet_id);
+        transactionController.create(transaction);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/createTransaction.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void updateTransaction(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
+        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
+        String action = request.getParameter("action");
+        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
+        Wallet wallet_id = new Wallet(walletId);
+        Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
+        transactionController.update(transaction);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/editTransaction.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }
