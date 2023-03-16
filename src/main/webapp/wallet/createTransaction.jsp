@@ -42,7 +42,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="1" align="center">
+                <td colspan="5" align="center">
                     <input type="submit" value="Save"/>
                 </td>
             </tr>
