@@ -14,20 +14,23 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
-        body{
+        body {
             font-size: 16px;
             color: #050c3f;
             font-weight: 400;
             line-height: 28px;
             letter-spacing: 0.8px;
-            margin-top:20px;
+            margin-top: 20px;
             background: rgba(223, 230, 243, 0.98);
         }
+
         .font-size38 {
             font-size: 38px;
         }
+
         .team-single-text .section-heading h4,
         .section-heading h5 {
             font-size: 36px
@@ -42,6 +45,7 @@
             .section-heading h5 {
                 font-size: 32px
             }
+
             .team-single-text .section-heading.half {
                 margin-bottom: 15px
             }
@@ -52,6 +56,7 @@
             .section-heading h5 {
                 font-size: 28px
             }
+
             .team-single-text .section-heading.half {
                 margin-bottom: 10px
             }
@@ -116,12 +121,15 @@
         .padding-30px-all {
             padding: 30px;
         }
+
         .bg-light-gray {
             background-color: #f7f7f7;
         }
+
         .text-center {
-            text-align: center!important;
+            text-align: center !important;
         }
+
         img {
             width: 100%;
             height: 100%;
@@ -216,6 +224,7 @@
             box-shadow: none;
             margin-bottom: 25px;
         }
+
         .progress {
             display: -ms-flexbox;
             display: flex;
@@ -260,7 +269,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Homepage</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -268,6 +278,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/user">Profile</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" onclick="confirmDelete()">Delete ${requestScope["login_name"]}</a>
                 </li>
@@ -275,13 +286,15 @@
                     <a class="nav-link" href="/user?action=editProfile">Update ${requestScope["login_name"]}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         Wallets
                     </a>
                     <form method="post">
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <c:forEach items='${requestScope["wallets"]}' var="wallet">
                                 <li><a class="dropdown-item" name="wallet_id" value="${wallet.getId()}" href="/transaction?id=${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</a></li>
+
                             </c:forEach>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -295,6 +308,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="/plannedtransaction">Planned Transaction</a>
+
                     <%--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
                 </li>
             </ul>
@@ -306,7 +320,8 @@
         </div>
     </div>
 </nav>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+      integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
 <div class="container">
     <div class="team-single">
         <div class="row">
@@ -315,8 +330,9 @@
                     <img src="${requestScope["user"].getPicture_url()}" alt="">
                 </div>
                 <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
-                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Profile Picture</h4>
-<%--                    <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>--%>
+                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Profile
+                        Picture</h4>
+                    <%--                    <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>--%>
                     <div class="margin-20px-top team-single-icons">
                         <ul class="no-margin">
                             <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
@@ -331,7 +347,7 @@
             <div class="col-lg-8 col-md-7">
                 <div class="team-single-text padding-50px-left sm-no-padding-left">
                     <h4 class="font-size38 sm-font-size32 xs-font-size30">${requestScope["user"].getUser_name()}</h4>
-<%--                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>--%>
+                    <%--                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>--%>
                     <div class="contact-info-section margin-40px-tb">
                         <ul class="list-style9 no-margin">
                             <li>
@@ -418,46 +434,46 @@
                         </ul>
                     </div>
 
-<%--                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Professional Skills</h5>--%>
+                    <%--                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Professional Skills</h5>--%>
 
-<%--                    <div class="sm-no-margin">--%>
-<%--                        <div class="progress-text">--%>
-<%--                            <div class="row">--%>
-<%--                                <div class="col-7">Positive Behaviors</div>--%>
-<%--                                <div class="col-5 text-right">40%</div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="custom-progress progress">--%>
-<%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%" class="animated custom-bar progress-bar slideInLeft bg-sky"></div>--%>
-<%--                        </div>--%>
-<%--                        <div class="progress-text">--%>
-<%--                            <div class="row">--%>
-<%--                                <div class="col-7">Teamworking Abilities</div>--%>
-<%--                                <div class="col-5 text-right">50%</div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="custom-progress progress">--%>
-<%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%" class="animated custom-bar progress-bar slideInLeft bg-orange"></div>--%>
-<%--                        </div>--%>
-<%--                        <div class="progress-text">--%>
-<%--                            <div class="row">--%>
-<%--                                <div class="col-7">Time Management </div>--%>
-<%--                                <div class="col-5 text-right">60%</div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="custom-progress progress">--%>
-<%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:60%" class="animated custom-bar progress-bar slideInLeft bg-green"></div>--%>
-<%--                        </div>--%>
-<%--                        <div class="progress-text">--%>
-<%--                            <div class="row">--%>
-<%--                                <div class="col-7">Excellent Communication</div>--%>
-<%--                                <div class="col-5 text-right">80%</div>--%>
-<%--                            </div>--%>
-<%--                        </div>--%>
-<%--                        <div class="custom-progress progress">--%>
-<%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
+                    <%--                    <div class="sm-no-margin">--%>
+                    <%--                        <div class="progress-text">--%>
+                    <%--                            <div class="row">--%>
+                    <%--                                <div class="col-7">Positive Behaviors</div>--%>
+                    <%--                                <div class="col-5 text-right">40%</div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="custom-progress progress">--%>
+                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%" class="animated custom-bar progress-bar slideInLeft bg-sky"></div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="progress-text">--%>
+                    <%--                            <div class="row">--%>
+                    <%--                                <div class="col-7">Teamworking Abilities</div>--%>
+                    <%--                                <div class="col-5 text-right">50%</div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="custom-progress progress">--%>
+                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%" class="animated custom-bar progress-bar slideInLeft bg-orange"></div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="progress-text">--%>
+                    <%--                            <div class="row">--%>
+                    <%--                                <div class="col-7">Time Management </div>--%>
+                    <%--                                <div class="col-5 text-right">60%</div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="custom-progress progress">--%>
+                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:60%" class="animated custom-bar progress-bar slideInLeft bg-green"></div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="progress-text">--%>
+                    <%--                            <div class="row">--%>
+                    <%--                                <div class="col-7">Excellent Communication</div>--%>
+                    <%--                                <div class="col-5 text-right">80%</div>--%>
+                    <%--                            </div>--%>
+                    <%--                        </div>--%>
+                    <%--                        <div class="custom-progress progress">--%>
+                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>--%>
+                    <%--                        </div>--%>
+                    <%--                    </div>--%>
 
                 </div>
             </div>
@@ -532,11 +548,13 @@
 <%--<footer class="container-fluid text-center">--%>
 <%--    <p>Footer Text</p>--%>
 <%--</footer>--%>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
 </body>
 <script>
-    function confirmDelete()  {
-        if(confirm("Are you sure ?")) {
+    function confirmDelete() {
+        if (confirm("Are you sure ?")) {
             window.location = "user?action=delete"
         }
 

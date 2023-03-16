@@ -1,6 +1,6 @@
 package model;
 
-public class PlannedTransaction{
+public class PlannedTransaction {
     private int id;
     private String action;
     private long money_Amount;

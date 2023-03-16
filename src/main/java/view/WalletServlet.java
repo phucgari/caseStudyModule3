@@ -13,24 +13,25 @@ import java.util.ArrayList;
 
 @WebServlet(name = "WalletServlet", value = "/wallet")
 public class WalletServlet extends HttpServlet {
-    WalletControllerImpl walletController=new WalletControllerImpl();
+    WalletControllerImpl walletController = new WalletControllerImpl();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         WalletManager.setWalletList(request);
-        String action=request.getParameter("action");
-        if(action==null)action="";
-        switch(action){
+        String action = request.getParameter("action");
+        if (action == null) action = "";
+        switch (action) {
             case "create":
-                showCreateNewWallet(request,response);
+                showCreateNewWallet(request, response);
                 break;
             case "edit":
-                showEditWallet(request,response);
+                showEditWallet(request, response);
                 break;
             case "delete":
                 deleteWallet(request,response);
                 break;
             default:
-                showALlWallet(request,response);
+                showALlWallet(request, response);
         }
     }
 
@@ -42,12 +43,12 @@ public class WalletServlet extends HttpServlet {
     }
 
     private void showEditWallet(HttpServletRequest request, HttpServletResponse response) {
-        int id= Integer.parseInt(request.getParameter("id"));
-        Wallet wallet=walletController.showByIndex(id);
-        request.setAttribute("wallet",wallet);
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("wallet/editWallet.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Wallet wallet = walletController.showByIndex(id);
+        request.setAttribute("wallet", wallet);
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/editWallet.jsp");
         try {
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -56,9 +57,9 @@ public class WalletServlet extends HttpServlet {
     }
 
     private void showCreateNewWallet(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher=request.getRequestDispatcher("wallet/createNewWallet.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("wallet/createNewWallet.jsp");
         try {
-            requestDispatcher.forward(request,response);
+            requestDispatcher.forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -68,7 +69,7 @@ public class WalletServlet extends HttpServlet {
 
     private void showALlWallet(HttpServletRequest request, HttpServletResponse response) {
         try {
-            request.getRequestDispatcher("wallet/showAllWallets.jsp").forward(request,response);
+            request.getRequestDispatcher("wallet/showAllWallets.jsp").forward(request, response);
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -78,13 +79,13 @@ public class WalletServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String action=request.getParameter("action");
-        switch(action) {
+        String action = request.getParameter("action");
+        switch (action) {
             case "create":
                 createNewWallet(request, response);
                 break;
             case "edit":
-                editWallet(request,response);
+                editWallet(request, response);
         }
     }
 
@@ -97,11 +98,11 @@ public class WalletServlet extends HttpServlet {
     }
 
     private static Wallet getWallet(HttpServletRequest request) {
-        HttpSession session= request.getSession();
-        int id= (int) session.getAttribute("id");
-        String name= request.getParameter("name");
-        long balance= Long.parseLong(request.getParameter("balance"));
-        Wallet wallet=new Wallet(name,balance,new User(id));
+        HttpSession session = request.getSession();
+        int id = (int) session.getAttribute("id");
+        String name = request.getParameter("name");
+        long balance = Long.parseLong(request.getParameter("balance"));
+        Wallet wallet = new Wallet(name, balance, new User(id));
         return wallet;
     }
 
@@ -110,5 +111,6 @@ public class WalletServlet extends HttpServlet {
         walletController.create(wallet);
         WalletManager.setWalletList(request);
         showALlWallet(request,response);
+
     }
 }

@@ -1,6 +1,7 @@
 package view;
 
 import controller.transaction.TransactionControllerImpl;
+import controller.wallet.WalletControllerImpl;
 import model.Transaction;
 import model.Wallet;
 
@@ -45,10 +46,7 @@ public class TransactionServlet extends HttpServlet {
         String action = request.getParameter("action");
         int walletId = Integer.parseInt(request.getParameter("wallet_id"));
         Wallet wallet_id = new Wallet(walletId);
-        Transaction transaction = new Transaction(id,time, money_Amount, action, wallet_id);
-//        tutututtutututu
-
-//        tututututututut
+        Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) {
@@ -95,13 +93,17 @@ public class TransactionServlet extends HttpServlet {
     }
 
     private void createTransaction(HttpServletRequest request, HttpServletResponse response) {
-        LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
+        LocalDateTime time = LocalDateTime.now();
         Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
         String action = request.getParameter("action");
-        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
-        Wallet wallet_id = new Wallet(walletId);
+        int walletId = Integer.parseInt(request.getParameter("id"));
+        WalletControllerImpl walletController = new WalletControllerImpl();
+        Wallet wallet_id = walletController.showByIndex(walletId);
         Transaction transaction = new Transaction(time, money_Amount, action, wallet_id);
-        transactionController.create(transaction);
+        if (wallet_id.getBalance() > money_Amount) {
+            transactionController.create(transaction);
+        }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/createTransaction.jsp");
         try {
             dispatcher.forward(request, response);
@@ -117,8 +119,7 @@ public class TransactionServlet extends HttpServlet {
         LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
         Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
         String action = request.getParameter("action");
-        int walletId = Integer.parseInt(request.getParameter("wallet_id"));
-        Wallet wallet_id = new Wallet(walletId);
+        Wallet wallet_id = new Wallet();
         Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
         transactionController.update(transaction);
         RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/editTransaction.jsp");

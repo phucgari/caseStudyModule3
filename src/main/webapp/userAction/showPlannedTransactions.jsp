@@ -55,6 +55,7 @@
             }
         }
 
+
         @media screen and (max-width: 767px) {
             .team-single-text .section-heading h4,
             .section-heading h5 {
@@ -317,17 +318,20 @@
         </header>
         <div class="panel-body">
             <form method="get">
-            <div class="row">
-                <div class="col-5">
-                    <input type="number" placeholder="Minimum Money_amount" class="inputlg form-control" name="money_start">
+                <div class="row">
+                    <div class="col-5">
+                        <input type="number" placeholder="Minimum Money_amount" class="inputlg form-control"
+                               name="money_start">
+                    </div>
+                    <div class="col-5">
+                        <input type="number" placeholder="Maximum Money_amount" class="inputlg form-control"
+                               name="money_end">
+                    </div>
+                    <div class="col-2">
+                        <span class="input-group-btn"><button type="submit"
+                                                              class="btn btn-sm btn-success"> search</button> </span>
+                    </div>
                 </div>
-                <div class="col-5">
-                    <input type="number" placeholder="Maximum Money_amount" class="inputlg form-control" name="money_end">
-                </div>
-                <div class="col-2">
-                    <span class="input-group-btn"><button type="submit" class="btn btn-sm btn-success"> search</button> </span>
-                </div>
-            </div>
             </form>
         </div>
         <table class="table table-hover p-table">
@@ -340,18 +344,20 @@
             </thead>
             <tbody>
             <c:forEach items="${requestScope['list']}" var="plannedTransaction">
-            <tr>
-                <td class="p-name">
-                    <h4 href="project_details.html">${plannedTransaction.getAction()}</h4>
-                </td>
-                <td>
-                    <span class="">${plannedTransaction.getMoney_Amount()}</span>
-                </td>
-                <td>
-                    <a href="/plannedtransaction?action=edit&id=${plannedTransaction.getId()}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                    <a href="/plannedtransaction?action=delete&id=${plannedTransaction.getId()}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                </td>
-            </tr>
+                <tr>
+                    <td class="p-name">
+                        <h4 href="project_details.html">${plannedTransaction.getAction()}</h4>
+                    </td>
+                    <td>
+                        <span class="">${plannedTransaction.getMoney_Amount()}</span>
+                    </td>
+                    <td>
+                        <a href="/plannedtransaction?action=edit&id=${plannedTransaction.getId()}"
+                           class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
+                        <a href="/plannedtransaction?action=delete&id=${plannedTransaction.getId()}"
+                           class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+                    </td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
