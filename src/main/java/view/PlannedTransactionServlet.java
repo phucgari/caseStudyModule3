@@ -34,7 +34,17 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void showEditForm(HttpServletRequest request, HttpServletResponse response) {
-
+        int id= Integer.parseInt(request.getParameter("id"));
+        PlannedTransaction plannedTransaction=plannedTransactionController.showByIndex(id);
+        request.setAttribute("plannedTransaction",plannedTransaction);
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("userAction/editPlannedTransaction");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
@@ -63,11 +73,18 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void editPTransaction(HttpServletRequest request, HttpServletResponse response) {
-
+        int id= Integer.parseInt(request.getParameter("id"));
+        String action= request.getParameter("action");
+        long money_Amount= Long.parseLong(request.getParameter("money_amount"));
+        int userId = Integer.parseInt(request.getParameter("user_id"));
+        User user_id=new User(userId);
+        PlannedTransaction plannedTransaction=new PlannedTransaction(id,action,money_Amount,user_id);        plannedTransactionController.update(plannedTransaction);
+        plannedTransactionController.update(plannedTransaction);
+        showPTransaction(request,response);
     }
 
     private void createNewPTransaction(HttpServletRequest request, HttpServletResponse response) {
-        String action=request.getParameter("action");
+        String action= request.getParameter("action");
         long money_Amount= Long.parseLong(request.getParameter("money_amount"));
         int userId = Integer.parseInt(request.getParameter("user_id"));
         User user_id=new User(userId);
