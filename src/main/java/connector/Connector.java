@@ -19,18 +19,20 @@ public class Connector {
         this.jdbcUsername = jdbcUsername;
         this.jdbcPassword = jdbcPassword;
     }
-    public Connection getConnection(){
+
+    public Connection getConnection() {
         Connection connection;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection= DriverManager.getConnection(jdbcURL,jdbcUsername,jdbcPassword);
+            connection = DriverManager.getConnection(jdbcURL, jdbcUsername, jdbcPassword);
             return connection;
         } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
-    public void flush(){
-        try(CallableStatement callableStatement=getConnection().prepareCall(FLUSH)) {
+
+    public void flush() {
+        try (CallableStatement callableStatement = getConnection().prepareCall(FLUSH)) {
             callableStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);

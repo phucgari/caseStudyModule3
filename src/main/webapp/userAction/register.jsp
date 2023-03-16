@@ -5,7 +5,7 @@
   Time: 4:18 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -18,10 +18,12 @@
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 </head>
 <body>
 <style>
@@ -73,7 +75,8 @@
                     </a>
                 </li>
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow"
+                       target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                 </li>
@@ -151,7 +154,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th >Phone:</th>
+                                <th>Phone:</th>
                                 <td>
                                     <input type="text" name="phone" id="phone" size="35"/>*
                                 </td>
@@ -164,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">
-                                    <input class="btn btn-primary btn-block"  type="submit" value="Sign in"/>
+                                    <input class="btn btn-primary btn-block" type="submit" value="Sign in"/>
                                 </td>
                             </tr>
                             <tr>
