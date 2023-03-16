@@ -84,7 +84,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${requestScope['list']}" var="transaction">
+            <c:forEach items="${requestScope['transactions']}" var="transaction">
                 <tr>
                     <td class="p-name">
                         <h4 href="project_details.html">${transaction.getAction()}</h4>

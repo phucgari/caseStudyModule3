@@ -45,14 +45,16 @@ public class TransactionServlet extends HttpServlet {
 
     private void showTransaction(HttpServletRequest request, HttpServletResponse response) {
         int walletId = Integer.parseInt(request.getParameter("id"));
-        LocalDateTime timeStart = LocalDateTime.parse((request.getParameter("timeStart")));
-        LocalDateTime timeEnd = LocalDateTime.parse((request.getParameter("timeEnd")));
+        LocalDateTime timeStart = request.getParameter("timeStart") == null ? LocalDateTime.parse("2018-06-07T00:00") :
+                LocalDateTime.parse(request.getParameter("timeStart"));
+        LocalDateTime timeEnd = request.getParameter("timeEnd") == null ? LocalDateTime.parse("2024-06-14T00:00") :
+                LocalDateTime.parse(request.getParameter("timeEnd"));
         long moneyStart = request.getParameter("moneyStart") == null ? 0 :
                 Long.parseLong(request.getParameter("moneyStart"));
         long moneyEnd = request.getParameter("moneyEnd") == null ? Long.MAX_VALUE :
                 Long.parseLong(request.getParameter("moneyEnd"));
         ArrayList<Transaction> transactions = transactionController.ShowTransactionOnDemand(walletId, timeStart, timeEnd, moneyStart, moneyEnd);
-        request.setAttribute("transaction", transactions);
+        request.setAttribute("transactions", transactions);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/showAllTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
