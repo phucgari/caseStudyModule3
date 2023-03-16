@@ -16,6 +16,7 @@ public interface UserController extends GenericController<User> {
     void update(User user);
 
     void delete(int index);
-    User login (String userName, String password);
+
+    User login(String userName, String password);
 
 }

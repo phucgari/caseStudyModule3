@@ -45,7 +45,7 @@ public class TransactionServlet extends HttpServlet {
         String action = request.getParameter("action");
         int walletId = Integer.parseInt(request.getParameter("wallet_id"));
         Wallet wallet_id = new Wallet(walletId);
-        Transaction transaction = new Transaction(id,time, money_Amount, action, wallet_id);
+        Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
 //        tutututtutututu
 
 //        tututututututut
