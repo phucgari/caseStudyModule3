@@ -50,6 +50,9 @@
         <div class="panel-body">
             <form method="get">
                 <div class="row">
+                    <c:if test="${transaction != null}">
+                        <input type="hidden" name="id" value="${transaction.wallet.id}"/>
+                    </c:if>
                     <div class="col-5">
                         <input type="datetime-local" name="timeStart" id="timeStart"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
                                value = "<c:out value='2018-06-07T00:00'/>">
@@ -57,6 +60,14 @@
                     <div class="col-5">
                         <input type="datetime-local" name="timeEnd" id="timeEnd"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
                                value = "<c:out value='2024-06-14T00:00'/>">
+                    </div>
+                    <div class="col-5">
+                        <input type="number" class="inputlg form-control"
+                           name="moneyStart">
+                    </div>
+                    <div class="col-5">
+                        <input type="number" class="inputlg form-control"
+                               name="moneyEnd">
                     </div>
                     <div class="col-2">
                         <span class="input-group-btn"><button type="submit" class="btn btn-sm btn-success"> search</button> </span>

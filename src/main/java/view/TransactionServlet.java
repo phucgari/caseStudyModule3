@@ -44,15 +44,14 @@ public class TransactionServlet extends HttpServlet {
     }
 
     private void showTransaction(HttpServletRequest request, HttpServletResponse response) {
-        HttpSession session = request.getSession();
-        int id = (int) session.getAttribute("id");
+        int walletId = Integer.parseInt(request.getParameter("id"));
         LocalDateTime timeStart = LocalDateTime.parse((request.getParameter("timeStart")));
         LocalDateTime timeEnd = LocalDateTime.parse((request.getParameter("timeEnd")));
         Long moneyStart = Long.valueOf(request.getParameter("moneyStart"));
         Long moneyEnd = Long.valueOf(request.getParameter("moneyEnd"));
-        ArrayList<Transaction> transactions = transactionController.ShowTransactionOnDemand(id, timeStart, timeEnd, moneyStart, moneyEnd);
+        ArrayList<Transaction> transactions = transactionController.ShowTransactionOnDemand(walletId, timeStart, timeEnd, moneyStart, moneyEnd);
         request.setAttribute("transaction", transactions);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/showAllTransactions.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/showAllTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
