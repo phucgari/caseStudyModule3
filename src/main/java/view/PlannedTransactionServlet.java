@@ -1,6 +1,7 @@
 package view;
 
 import controller.plannedtransaction.PlannedTransactionControllerImpl;
+import manager.WalletManager;
 import model.PlannedTransaction;
 import model.User;
 
@@ -16,19 +17,28 @@ public class PlannedTransactionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String action = request.getParameter("action");
-        if (action == null) action = "";
-        switch (action) {
+    WalletManager.setWalletList(request);
+        String action=request.getParameter("action");
+        if(action==null)action="";
+        switch (action){
+
             case "create":
                 showCreateForm(request, response);
                 break;
             case "edit":
                 showEditForm(request, response);
                 break;
+            case "delete":
+                deletePlannedTransaction(request,response);
             default:
                 showPTransaction(request, response);
                 break;
         }
+    }
+
+    private void deletePlannedTransaction(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        plannedTransactionController.delete(id);
     }
 
     private void showPTransaction(HttpServletRequest request, HttpServletResponse response) {
