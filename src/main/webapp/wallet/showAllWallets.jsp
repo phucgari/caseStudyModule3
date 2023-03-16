@@ -258,7 +258,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Homepage</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -266,6 +267,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="/user">Profile</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link" onclick="confirmDelete()">Delete ${requestScope["login_name"]}</a>
                 </li>
@@ -273,13 +275,15 @@
                     <a class="nav-link" href="/user?action=editProfile">Update ${requestScope["login_name"]}</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
                         Wallets
                     </a>
                     <form method="post">
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <c:forEach items='${requestScope["wallets"]}' var="wallet">
                                 <li><a class="dropdown-item" name="wallet_id" value="${wallet.getId()}" href="/transaction?id=${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</a></li>
+
                             </c:forEach>
                             <li><hr class="dropdown-divider"></li>
                             <li>
@@ -292,7 +296,8 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="">Planned Transaction</a>
+                    <a class="nav-link" aria-current="page" href="/plannedtransaction">Planned Transaction</a>
+
                     <%--                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>--%>
                 </li>
             </ul>
@@ -304,7 +309,7 @@
         </div>
     </div>
 </nav>
-
+<div class="container">
 <table class="table table-hover p-table">
     <thead>
     <tr>
@@ -330,7 +335,7 @@
     </c:forEach>
     </tbody>
 </table>
-
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 <script>
     function confirmDelete()  {
