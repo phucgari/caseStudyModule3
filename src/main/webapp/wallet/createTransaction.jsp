@@ -8,63 +8,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Transaction</title>
-</head>
-<body>
-<center>
-    <h1>Create Transaction</h1>
-</center>
-<div align="center">
-    <form method="post">
-        <table border="1" cellpadding="5">
-            <tr>
-                <th>time</th>
-                <td>
-                    <input type="datetime-local" name="time" id="meeting-time" value="2018-06-12T19:30"
-                           min="2018-06-07T00:00" max="2024-06-14T00:00" size="60"/> *
-                </td>
-            </tr>
-            <tr>
-                <th>money_amount</th>
-                <td>
-                    <input type="text" name="money_Amount" id="money_Amount" size="60"/> *
-                </td>
-            </tr>
-            <tr>
-                <th>action</th>
-                <td>
-                    <input type="text" name="action" id="action" size="60"/> *
-                </td>
-            </tr>
-            <tr>
-                <th>wallet_id</th>
-                <td>
-                    <input type="text" name="wallet_id" id="wallet_id" size="60"/> *
-                </td>
-            </tr>
-            <tr>
-                <td colspan="5" align="center">
-                    <input type="submit" value="Save"/>
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
-
-</body>
-</html>
-
-------------------------------------------------------
-<html>
-<head>
     <title>Login Page</title>
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -72,7 +25,7 @@
 <body>
 <style>
     #intro {
-        background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+        background-image: url(https://hilaw.vn/wp-content/uploads/2021/10/he-thong-tai-chinh-trong-nen-kinh-te-thi-truong-o-viet-nam.jpg);
         height: 100vh;
     }
 
@@ -119,7 +72,8 @@
                     </a>
                 </li>
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow"
+                       target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                 </li>
@@ -137,85 +91,25 @@
                 <div class="col-xl-5 col-md-8">
                     <form class="bg-white  rounded-3 shadow-3-strong p-3" method="post">
                         <table style="background: white" cellpadding="3">
+                            <h1>Create Transaction</h1>
                             <tr>
-                                <td colspan="2" align="center">
-                                    <h2>Register</h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>User Name:</th>
+                                <th>money_amount</th>
                                 <td>
-                                    <input type="text" name="login_name" id="login_name" size="35"/>*
+                                    <input type="text" name="money_Amount" id="money_Amount" size="35"/>*
                                 </td>
                             </tr>
                             <tr>
-                                <th>Password:</th>
+                                <th>action</th>
                                 <td>
-                                    <input type="text" name="login_password" id="login_password" size="35"/>*
+                                    <input type="text" name="action" id="action" size="35"/>*
                                 </td>
                             </tr>
                             <tr>
-                                <th>Email:</th>
-                                <td>
-                                    <input type="text" name="email" id="email" size="35"/>
+                                <td colspan="5" align="center">
+                                    <input type="submit" value="Save"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <th>Picture:</th>
-                                <td>
-                                    <input type="text" name="picture_url" id="picture_url" size="35"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Gender:</th>
-                                <td>
-                                    <select name="gender" id="gender"/>*
-                                    <option value="true">Male</option>
-                                    <option value="false">Female</option>
-                                    </select>
-                                </td>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Name:</th>
-                                <td>
-                                    <input type="text" name="user_name" id="user_name" size="35"/>*
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>user_dob:</th>
-                                <td>
-                                    <input type="text" name="user_dob" id="user_dob" size="35"/>*
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Card id:</th>
-                                <td>
-                                    <input type="text" name="card_id" id="card_id" size="35"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th >Phone:</th>
-                                <td>
-                                    <input type="text" name="phone" id="phone" size="35"/>*
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Address:</th>
-                                <td>
-                                    <input type="text" name="address" id="address" size="35"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="2">
-                                    <input class="btn btn-primary btn-block"  type="submit" value="Sign in"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="2">
-                                    <a href="http://localhost:8080/user?action=login">Back to LogIn</a>
-                                </td>
-                            </tr>
+
                         </table>
                     </form>
                 </div>

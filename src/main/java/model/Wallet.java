@@ -17,6 +17,10 @@ public class Wallet {
         this.user_id = user_id;
     }
 
+    public Wallet() {
+
+    }
+
     public int getId() {
         return id;
     }
