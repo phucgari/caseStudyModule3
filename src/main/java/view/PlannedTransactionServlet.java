@@ -8,8 +8,9 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
-@WebServlet(name = "PlannedTransactionServlet", value = "/plannedTransaction")
+@WebServlet(name = "PlannedTransactionServlet", value = "/plannedtransaction")
 public class PlannedTransactionServlet extends HttpServlet {
     PlannedTransactionControllerImpl plannedTransactionController=new PlannedTransactionControllerImpl();
     @Override
@@ -30,6 +31,22 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void showPTransaction(HttpServletRequest request, HttpServletResponse response) {
+        HttpSession session=request.getSession();
+        int userId = (int) session.getAttribute("id");
+        long moneyStart = request.getParameter("money_start")==null?0:
+                Long.parseLong(request.getParameter("money_start"));
+        long moneyEnd = request.getParameter("money_end")==null?Long.MAX_VALUE:
+                Long.parseLong(request.getParameter("money_end"));
+        ArrayList<PlannedTransaction> plannedTransactions=plannedTransactionController.showPlannedTransactionOnDemand(userId, moneyStart, moneyEnd);
+        request.setAttribute("list",plannedTransactions);
+        RequestDispatcher requestDispatcher=request.getRequestDispatcher("/userAction/showPlannedTransactions.jsp");
+        try {
+            requestDispatcher.forward(request,response);
+        } catch (ServletException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
