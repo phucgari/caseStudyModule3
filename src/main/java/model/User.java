@@ -98,6 +98,7 @@ public class User {
     }
 
     public String getPicture_url() {
+        if(picture_url==null)return "https://bootdey.com/img/Content/avatar/avatar7.png";
         return picture_url;
     }
 
