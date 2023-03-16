@@ -283,6 +283,13 @@
                             <c:forEach items='${requestScope["wallets"]}' var="wallet">
                                 <li><button class="dropdown-item" name="wallet_id" value="${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</button></li>
                             </c:forEach>
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-5 col-5">
+                                        <a href="/wallet?action=create">+Create...</a>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </form>
                 </li>
