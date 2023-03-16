@@ -42,7 +42,7 @@ public class TransactionServlet extends HttpServlet {
     private void showAllTransaction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
-        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
+        Long money_Amount = Long.valueOf(request.getParameter("money_amount"));
         String action = request.getParameter("action");
         int walletId = Integer.parseInt(request.getParameter("wallet_id"));
         Wallet wallet_id = new Wallet(walletId);
@@ -94,8 +94,8 @@ public class TransactionServlet extends HttpServlet {
 
     private void createTransaction(HttpServletRequest request, HttpServletResponse response) {
         LocalDateTime time = LocalDateTime.now();
-        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
-        String action = request.getParameter("action");
+        Long money_Amount = Long.valueOf(request.getParameter("money_amount"));
+        String action = request.getParameter("t_action");
         int walletId = Integer.parseInt(request.getParameter("id"));
         WalletControllerImpl walletController = new WalletControllerImpl();
         Wallet wallet_id = walletController.showByIndex(walletId);
@@ -117,8 +117,8 @@ public class TransactionServlet extends HttpServlet {
     private void updateTransaction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         LocalDateTime time = LocalDateTime.parse(request.getParameter("time"));
-        Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
-        String action = request.getParameter("action");
+        Long money_Amount = Long.valueOf(request.getParameter("money_amount"));
+        String action = request.getParameter("t_action");
         Wallet wallet_id = new Wallet();
         Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
         transactionController.update(transaction);
