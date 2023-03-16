@@ -65,7 +65,7 @@ public class PlannedTransactionServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         PlannedTransaction plannedTransaction = plannedTransactionController.showByIndex(id);
         request.setAttribute("plannedTransaction", plannedTransaction);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/editPlannedTransaction");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/editPlannedTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -76,7 +76,7 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/createPlannedTransaction");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/createPlannedTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
