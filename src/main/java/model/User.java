@@ -14,7 +14,6 @@ public class User {
     private String picture_url;
     private boolean gender;
     private String user_name;
-    SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
     LocalDate user_dob;
     private String card_id;
     private String phone;
