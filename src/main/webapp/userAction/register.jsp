@@ -22,9 +22,6 @@
 
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <!--Custom styles-->
-    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
 <style>
@@ -126,10 +123,10 @@
                             <tr>
                                 <th>Gender:</th>
                                 <td>
-                                    <select name="gender" id="gender"/>*
+                                    <select name="gender" id="gender"/>
                                     <option value="true">Male</option>
                                     <option value="false">Female</option>
-                                    </select>
+                                    </select>*
                                 </td>
                                 </td>
                             </tr>
@@ -142,7 +139,9 @@
                             <tr>
                                 <th>user_dob:</th>
                                 <td>
-                                    <input type="text" name="user_dob" id="user_dob" size="35"/>*
+                                    <input type="date" id="user_dob" name="user_dob"
+                                           value="2000-01-01"
+                                           min="1900-01-01" max="2100-12-31"/>
                                 </td>
                             </tr>
                             <tr>
