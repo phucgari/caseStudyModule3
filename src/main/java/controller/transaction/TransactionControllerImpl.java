@@ -1,5 +1,6 @@
 package controller.transaction;
 
+import controller.wallet.WalletControllerImpl;
 import model.Transaction;
 import model.Wallet;
 
@@ -100,6 +101,14 @@ public class TransactionControllerImpl implements TransactionController {
             preparedStatement.setLong(2, transaction.getMoney_Amount());
             preparedStatement.setString(3, transaction.getAction());
             preparedStatement.setInt(4, transaction.getWallet_id().getId());
+
+
+            WalletControllerImpl walletController = new WalletControllerImpl();
+            Wallet wallet = walletController.showByIndex(transaction.getWallet_id().getId());
+            wallet.setBalance(wallet.getBalance() - transaction.getMoney_Amount());
+            walletController.update(wallet);
+
+
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);

@@ -1,6 +1,7 @@
 package view;
 
 import controller.transaction.TransactionControllerImpl;
+import controller.wallet.WalletControllerImpl;
 import model.Transaction;
 import model.Wallet;
 
@@ -46,9 +47,6 @@ public class TransactionServlet extends HttpServlet {
         int walletId = Integer.parseInt(request.getParameter("wallet_id"));
         Wallet wallet_id = new Wallet(walletId);
         Transaction transaction = new Transaction(id, time, money_Amount, action, wallet_id);
-//        tutututtutututu
-
-//        tututututututut
     }
 
     private void showNewForm(HttpServletRequest request, HttpServletResponse response) {
@@ -99,9 +97,13 @@ public class TransactionServlet extends HttpServlet {
         Long money_Amount = Long.valueOf(request.getParameter("money_Amount"));
         String action = request.getParameter("action");
         int walletId = Integer.parseInt(request.getParameter("id"));
-        Wallet wallet_id = new Wallet(walletId);
+        WalletControllerImpl walletController = new WalletControllerImpl();
+        Wallet wallet_id = walletController.showByIndex(walletId);
         Transaction transaction = new Transaction(time, money_Amount, action, wallet_id);
-        transactionController.create(transaction);
+        if (wallet_id.getBalance() > money_Amount) {
+            transactionController.create(transaction);
+        }
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("wallet/createTransaction.jsp");
         try {
             dispatcher.forward(request, response);
