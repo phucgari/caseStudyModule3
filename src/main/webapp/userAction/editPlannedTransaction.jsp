@@ -1,27 +1,23 @@
 <%--
   Created by IntelliJ IDEA.
   User: Admin
-  Date: 3/10/2023
-  Time: 4:54 PM
+  Date: 16/03/2023
+  Time: 16:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Create Wallet</title>
+    <title>Login Page</title>
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <!--Fontawesome CDN-->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
+          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -29,7 +25,7 @@
 <body>
 <style>
     #intro {
-        background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
+        background-image: url(https://hilaw.vn/wp-content/uploads/2021/10/he-thong-tai-chinh-trong-nen-kinh-te-thi-truong-o-viet-nam.jpg);
         height: 100vh;
     }
 
@@ -60,7 +56,7 @@
             <ul class="navbar-nav d-flex flex-row">
                 <!-- Icons -->
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                    <a class="nav-link" href="https://www.youtube.com/@programmingwithmosh" rel="nofollow"
                        target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
@@ -76,7 +72,8 @@
                     </a>
                 </li>
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://github.com/phucgari/caseStudyModule3" rel="nofollow"
+                       target="_blank">
                         <i class="fab fa-github"></i>
                     </a>
                 </li>
@@ -94,41 +91,25 @@
                 <div class="col-xl-5 col-md-8">
                     <form class="bg-white  rounded-3 shadow-3-strong p-3" method="post">
                         <table style="background: white" cellpadding="3">
+                            <h1> Edit Planned Transaction </h1>
                             <tr>
-                                <td colspan="2" align="center">
-                                    <h2>Create Wallet</h2>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Name:</th>
+                                <th>money_amount</th>
                                 <td>
-                                    <input type="text" name="name" id="name" size="35"/>*
+                                    <input type="number" name="money_Amount" id="money_Amount" size="35"/>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Balance:</th>
+                                <th>action</th>
                                 <td>
-                                    <input type="text" name="balance" id="balance" size="35"/>*
+                                    <input type="text" name="P_action" id="action" size="35"/>
                                 </td>
                             </tr>
                             <tr>
-                                <th></th>
-                                <td>
-                                    <c:if test="${wallet != null}">
-                                        <input type="hidden" name="user_id" value="<c:out value='${wallet.user_id}' />"/>
-                                    </c:if>
+                                <td colspan="5" align="center">
+                                    <input type="submit" value="Save"/>
                                 </td>
                             </tr>
-                            <tr>
-                                <td align="center" colspan="2">
-                                    <input class="btn btn-primary btn-block"  type="submit" value="save"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="center" colspan="2">
-                                    <a href="user">Back to profile</a>
-                                </td>
-                            </tr>
+
                         </table>
                     </form>
                 </div>

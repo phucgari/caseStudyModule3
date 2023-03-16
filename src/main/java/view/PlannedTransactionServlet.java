@@ -102,9 +102,10 @@ public class PlannedTransactionServlet extends HttpServlet {
 
     private void editPTransaction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
-        String action = request.getParameter("action");
+        String action = request.getParameter("P_action");
         long money_Amount = Long.parseLong(request.getParameter("money_amount"));
-        int userId = Integer.parseInt(request.getParameter("user_id"));
+        HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("id");
         User user_id = new User(userId);
         PlannedTransaction plannedTransaction = new PlannedTransaction(id, action, money_Amount, user_id);
         plannedTransactionController.update(plannedTransaction);
@@ -113,9 +114,10 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void createNewPTransaction(HttpServletRequest request, HttpServletResponse response) {
-        String action = request.getParameter("action");
+        String action = request.getParameter("P_action");
         long money_Amount = Long.parseLong(request.getParameter("money_amount"));
-        int userId = Integer.parseInt(request.getParameter("user_id"));
+        HttpSession session = request.getSession();
+        int userId = (int) session.getAttribute("id");
         User user_id = new User(userId);
         PlannedTransaction plannedTransaction = new PlannedTransaction(action, money_Amount, user_id);
         plannedTransactionController.create(plannedTransaction);
