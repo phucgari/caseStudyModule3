@@ -1,6 +1,7 @@
 package view;
 
 import controller.plannedtransaction.PlannedTransactionControllerImpl;
+import manager.WalletManager;
 import model.PlannedTransaction;
 import model.User;
 
@@ -16,19 +17,28 @@ public class PlannedTransactionServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        String action = request.getParameter("action");
-        if (action == null) action = "";
-        switch (action) {
+    WalletManager.setWalletList(request);
+        String action=request.getParameter("action");
+        if(action==null)action="";
+        switch (action){
+
             case "create":
                 showCreateForm(request, response);
                 break;
             case "edit":
                 showEditForm(request, response);
                 break;
+            case "delete":
+                deletePlannedTransaction(request,response);
             default:
                 showPTransaction(request, response);
                 break;
         }
+    }
+
+    private void deletePlannedTransaction(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        plannedTransactionController.delete(id);
     }
 
     private void showPTransaction(HttpServletRequest request, HttpServletResponse response) {
@@ -55,7 +65,7 @@ public class PlannedTransactionServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         PlannedTransaction plannedTransaction = plannedTransactionController.showByIndex(id);
         request.setAttribute("plannedTransaction", plannedTransaction);
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/editPlannedTransaction");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/editPlannedTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {
@@ -66,7 +76,7 @@ public class PlannedTransactionServlet extends HttpServlet {
     }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/createPlannedTransaction");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/createPlannedTransaction.jsp");
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

@@ -27,9 +27,19 @@ public class WalletServlet extends HttpServlet {
             case "edit":
                 showEditWallet(request, response);
                 break;
+            case "delete":
+                deleteWallet(request,response);
+                break;
             default:
                 showALlWallet(request, response);
         }
+    }
+
+    private void deleteWallet(HttpServletRequest request, HttpServletResponse response) {
+        int id= Integer.parseInt(request.getParameter("id"));
+        walletController.delete(id);
+        WalletManager.setWalletList(request);
+        showALlWallet(request, response);
     }
 
     private void showEditWallet(HttpServletRequest request, HttpServletResponse response) {
@@ -83,6 +93,7 @@ public class WalletServlet extends HttpServlet {
         Wallet wallet = getWallet(request);
         wallet.setId(Integer.parseInt(request.getParameter("id")));
         walletController.update(wallet);
+        WalletManager.setWalletList(request);
         showALlWallet(request, response);
     }
 
@@ -98,6 +109,8 @@ public class WalletServlet extends HttpServlet {
     private void createNewWallet(HttpServletRequest request, HttpServletResponse response) {
         Wallet wallet = getWallet(request);
         walletController.create(wallet);
-        showALlWallet(request, response);
+        WalletManager.setWalletList(request);
+        showALlWallet(request,response);
+
     }
 }
