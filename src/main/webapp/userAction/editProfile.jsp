@@ -23,7 +23,7 @@
 
     <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
+    <style>
         #intro {
             background-image: url(https://mdbootstrap.com/img/new/fluid/city/008.jpg);
             height: 100vh;
