@@ -81,6 +81,7 @@ public class WalletServlet extends HttpServlet {
 
     private void editWallet(HttpServletRequest request, HttpServletResponse response) {
         Wallet wallet = getWallet(request);
+        wallet.setId(Integer.parseInt(request.getParameter("id")));
         walletController.update(wallet);
         showALlWallet(request, response);
     }
