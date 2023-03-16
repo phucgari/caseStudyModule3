@@ -1,5 +1,6 @@
 package controller.transaction;
 
+import controller.wallet.WalletControllerImpl;
 import model.Transaction;
 import model.Wallet;
 
@@ -64,13 +65,13 @@ public class TransactionControllerImpl implements TransactionController {
         ArrayList<Transaction> transactions = new ArrayList<>();
         try (Connection connection = connector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(SHOW_TRANSACTION_ON_DEMAND)) {
-            preparedStatement.setInt(1,wallet_id);
-            preparedStatement.setTimestamp(2,Timestamp.valueOf(timeStart));
-            preparedStatement.setTimestamp(3,Timestamp.valueOf(timeEnd));
-            preparedStatement.setLong(4,moneyStart);
-            preparedStatement.setLong(5,moneyEnd);
+            preparedStatement.setInt(1, wallet_id);
+            preparedStatement.setTimestamp(2, Timestamp.valueOf(timeStart));
+            preparedStatement.setTimestamp(3, Timestamp.valueOf(timeEnd));
+            preparedStatement.setLong(4, moneyStart);
+            preparedStatement.setLong(5, moneyEnd);
             ResultSet resultSet = preparedStatement.executeQuery();
-            while (resultSet.next()){
+            while (resultSet.next()) {
                 Transaction transaction = getTransaction(resultSet);
                 transactions.add(transaction);
             }
@@ -100,6 +101,14 @@ public class TransactionControllerImpl implements TransactionController {
             preparedStatement.setLong(2, transaction.getMoney_Amount());
             preparedStatement.setString(3, transaction.getAction());
             preparedStatement.setInt(4, transaction.getWallet_id().getId());
+
+
+            WalletControllerImpl walletController = new WalletControllerImpl();
+            Wallet wallet = walletController.showByIndex(transaction.getWallet_id().getId());
+            wallet.setBalance(wallet.getBalance() - transaction.getMoney_Amount());
+            walletController.update(wallet);
+
+
             preparedStatement.execute();
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -110,12 +119,12 @@ public class TransactionControllerImpl implements TransactionController {
     public Transaction showByIndex(int index) {
         Transaction transaction = null;
         try (Connection connection = connector.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TRANSACTION_BY_ID)){
-            preparedStatement.setInt(1,index);
+             PreparedStatement preparedStatement = connection.prepareStatement(SELECT_TRANSACTION_BY_ID)) {
+            preparedStatement.setInt(1, index);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
             transaction = getTransaction(resultSet);
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
         return transaction;
@@ -127,7 +136,7 @@ public class TransactionControllerImpl implements TransactionController {
         try (Connection connection = connector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_A_TRANSACTION)) {
             Timestamp timestamp = Timestamp.valueOf(transaction.getTime());
-            preparedStatement.setInt(4,transaction.getId());
+            preparedStatement.setInt(4, transaction.getId());
             preparedStatement.setTimestamp(1, timestamp);
             preparedStatement.setLong(2, transaction.getMoney_Amount());
             preparedStatement.setString(3, transaction.getAction());
