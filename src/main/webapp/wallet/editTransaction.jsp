@@ -108,14 +108,14 @@
                             <tr>
                                 <th>money_amount</th>
                                 <td>
-                                    <input type="text" name="money_Amount" size="35"
+                                    <input type="text" name="money_amount" size="35"
                                            value="<c:out value='${transaction.money_Amount}'/>">
                                 </td>
                             </tr>
                             <tr>
                                 <th>action</th>
                                 <td>
-                                    <input type="text" name="action" size="35"
+                                    <input type="text" name="t_action" size="35"
                                            value="<c:out value='${transaction.action}'/>">
                                 </td>
                             </tr>

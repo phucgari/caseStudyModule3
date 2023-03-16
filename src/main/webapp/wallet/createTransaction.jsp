@@ -95,13 +95,13 @@
                             <tr>
                                 <th>money_amount</th>
                                 <td>
-                                    <input type="text" name="money_Amount" id="money_Amount" size="35"/>*
+                                    <input type="text" name="money_amount" size="35"/>*
                                 </td>
                             </tr>
                             <tr>
                                 <th>action</th>
                                 <td>
-                                    <input type="text" name="action" id="action" size="35"/>*
+                                    <input type="text" name="t_action" size="35"/>*
                                 </td>
                             </tr>
                             <tr>
