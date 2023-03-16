@@ -55,11 +55,11 @@
                     </c:if>
                     <div class="col-5">
                         <input type="datetime-local" name="timeStart" id="timeStart"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
-                               value = "<c:out value='2018-06-07T00:00'/>">
+                               value='2018-06-07T00:00'>
                     </div>
                     <div class="col-5">
                         <input type="datetime-local" name="timeEnd" id="timeEnd"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
-                               value = "<c:out value='2024-06-14T00:00'/>">
+                               value='2024-06-14T00:00'>
                     </div>
                     <div class="col-5">
                         <input type="number" class="inputlg form-control"

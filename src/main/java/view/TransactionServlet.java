@@ -47,8 +47,10 @@ public class TransactionServlet extends HttpServlet {
         int walletId = Integer.parseInt(request.getParameter("id"));
         LocalDateTime timeStart = LocalDateTime.parse((request.getParameter("timeStart")));
         LocalDateTime timeEnd = LocalDateTime.parse((request.getParameter("timeEnd")));
-        Long moneyStart = Long.valueOf(request.getParameter("moneyStart"));
-        Long moneyEnd = Long.valueOf(request.getParameter("moneyEnd"));
+        long moneyStart = request.getParameter("moneyStart") == null ? 0 :
+                Long.parseLong(request.getParameter("moneyStart"));
+        long moneyEnd = request.getParameter("moneyEnd") == null ? Long.MAX_VALUE :
+                Long.parseLong(request.getParameter("moneyEnd"));
         ArrayList<Transaction> transactions = transactionController.ShowTransactionOnDemand(walletId, timeStart, timeEnd, moneyStart, moneyEnd);
         request.setAttribute("transaction", transactions);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("userAction/showAllTransaction.jsp");
