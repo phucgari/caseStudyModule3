@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -95,6 +96,9 @@
                             <tr>
                                 <th>money_amount</th>
                                 <td>
+                                    <c:if test="${transaction != null}">
+                                        <input type="hidden" name="id" value="${transaction.wallet.id}"/>
+                                    </c:if>
                                     <input type="text" name="money_amount" size="35"/>*
                                 </td>
                             </tr>
