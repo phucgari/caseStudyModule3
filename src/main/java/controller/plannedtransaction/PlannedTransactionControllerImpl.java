@@ -20,6 +20,7 @@ public class PlannedTransactionControllerImpl implements PlannedTransactionContr
     private final String CREATE_PLANNED_TRANSACTION="insert into planned_transaction (action,money_amount,user_id) " +
             "values (?,?,?)";
     private final String UPDATE_PLANNED_TRANSACTION="update planned_transaction set action=?,money_amount=? where id=?";
+    private final String FIND_PLANNED_TRANSACTION_BY_ID="select * from planned_transaction where id=?";
     @Override
     public Collection<PlannedTransaction> showAll() {
         return null;
@@ -68,7 +69,19 @@ public class PlannedTransactionControllerImpl implements PlannedTransactionContr
 
     @Override
     public PlannedTransaction showByIndex(int index) {
-        return null;
+        try(Connection connection=connector.getConnection();
+        PreparedStatement preparedStatement=connection.prepareStatement(FIND_PLANNED_TRANSACTION_BY_ID)) {
+            preparedStatement.setInt(1,index);
+            ResultSet resultSet=preparedStatement.executeQuery();
+            resultSet.next();
+            int id = resultSet.getInt("id");
+            String action = resultSet.getString("action");
+            long moneyAmount = resultSet.getLong("money_amount");
+            User userId = new User(resultSet.getInt("user_id"));
+            return new PlannedTransaction(id, action, moneyAmount, userId);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

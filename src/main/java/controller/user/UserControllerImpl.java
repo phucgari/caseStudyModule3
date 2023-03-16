@@ -15,9 +15,9 @@ public class UserControllerImpl implements UserController {
             "user.picture_url, user.gender, user.user_name, user.user_dob, user.card_id, user.phone, user.address) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
     private static final String UPDATE_USERS_SQL = "update user set user.login_name = ?, user.login_password = ?, user.email = ?," +
-            "user.picture_url = ?, user.gender = ?, user.user_name = ?, user.user_dob = ?, user.card_id = ?, user.phone = ?, user.address where user.id = ?;";
+            "user.picture_url = ?, user.gender = ?, user.user_name = ?, user.user_dob = ?, user.card_id = ?, user.phone = ?, user.address = ? where user.id = ?;";
     private static final String DELETE_USERS_SQL = "update user set user.disable=1 WHERE user.id=?;";
-    private static final String SELECT_USER = "select * from user where user.login_name = ? and user.login_password = ? ";
+    private static final String SELECT_USER = "select * from user where user.login_name = ? and user.login_password = ? and user.disable=0";
 
 
     public UserControllerImpl() {
@@ -139,6 +139,7 @@ public class UserControllerImpl implements UserController {
                 preparedStatement.setString(10, null);
             }
             preparedStatement.setInt(11, user.getId());
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,7 +151,7 @@ public class UserControllerImpl implements UserController {
         try (Connection connection = connector.getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(DELETE_USERS_SQL);) {
             preparedStatement.setInt(1, index);
-            preparedStatement.execute();
+            preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
