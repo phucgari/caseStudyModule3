@@ -56,13 +56,13 @@
             <ul class="navbar-nav d-flex flex-row">
                 <!-- Icons -->
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" rel="nofollow"
+                    <a class="nav-link" href="https://www.youtube.com/@programmingwithmosh" rel="nofollow"
                        target="_blank">
                         <i class="fab fa-youtube"></i>
                     </a>
                 </li>
                 <li class="nav-item me-3 me-lg-0">
-                    <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
+                    <a class="nav-link" href="https://www.facebook.com/nguyen.akira.372661" rel="nofollow" target="_blank">
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </li>
