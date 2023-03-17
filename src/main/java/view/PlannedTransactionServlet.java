@@ -110,7 +110,7 @@ public class PlannedTransactionServlet extends HttpServlet {
     private void editPTransaction(HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt(request.getParameter("id"));
         String action = request.getParameter("P_action");
-        long money_Amount = Long.parseLong(request.getParameter("money_amount"));
+        long money_Amount = Long.parseLong(request.getParameter("money_Amount"));
         HttpSession session = request.getSession();
         int userId = (int) session.getAttribute("id");
         User user_id = new User(userId);
