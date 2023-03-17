@@ -323,15 +323,13 @@
         <div class="panel-body">
             <form method="get">
                 <div class="row">
-                    <c:if test="${transaction != null}">
-                        <input type="hidden" name="id" value="${transaction.wallet.id}"/>
-                    </c:if>
+                    <input type="hidden" name="id" value="${requestScope['wallet_id']}"/>
                     <div class="col-5">
-                        <input type="datetime-local" name="timeStart" id="timeStart"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
+                        <input type="datetime-local" name="timeStart" id="timeStart"  min="1900-06-07T00:00" max="2100-06-14T00:00" size="35"
                                value='2018-06-07T00:00'>
                     </div>
                     <div class="col-5">
-                        <input type="datetime-local" name="timeEnd" id="timeEnd"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
+                        <input type="datetime-local" name="timeEnd" id="timeEnd"  min="1900-06-07T00:00" max="2100-06-14T00:00" size="35"
                                value='2024-06-14T00:00'>
                     </div>
                     <div class="col-5">
@@ -346,7 +344,7 @@
                         <span class="input-group-btn"><button type="submit" class="btn btn-sm btn-success"> search</button> </span>
                     </div>
                 </div>
-                <a href="/transaction?action=create&id=${transaction.wallet.getId()}" class=" btn btn-success btn-xs"> Create New Transaction</a>
+                <a href="/transaction?action=create&id=${requestScope['wallet_id']}" class=" btn btn-success btn-xs"> Create New Transaction</a>
             </form>
         </div>
         <table class="table table-hover p-table">
@@ -354,14 +352,16 @@
             <tr>
                 <th>Action</th>
                 <th>Money Amount</th>
+                <th>Time</th>
                 <th>Custom</th>
             </tr>
             </thead>
             <tbody>
+
             <c:forEach items="${requestScope['transactions']}" var="transaction">
                 <tr>
                     <td class="p-name">
-                        <h4 href="project_details.html">${transaction.getAction()}</h4>
+                        <h4>${transaction.getAction()}</h4>
                     </td>
                     <td>
                         <span class="">${transaction.getMoney_Amount()}</span>
@@ -371,10 +371,15 @@
                     </td>
                     <td>
                         <a href="/transaction?action=edit&id=${transaction.getId()}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                        <a href="/transaction?action=delete&id=${transaction.getId()}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
                     </td>
                 </tr>
             </c:forEach>
+            <tr>
+                <td class="p-name">
+                    <h4 >Total Money</h4>
+                </td>
+                <td>${requestScope["sum"]}</td>
+            </tr>
             </tbody>
         </table>
     </section>
