@@ -71,7 +71,7 @@ public class PlannedTransactionServlet extends HttpServlet {
         } catch (ServletException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(dde);
         }
     }
 
