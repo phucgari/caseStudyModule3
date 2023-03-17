@@ -14,7 +14,7 @@
 
 <html>
 <head>
-  <title>Create Wallet</title>
+  <title>Edit Wallet</title>
   <!--Made with love by Mutiullah Samim -->
 
   <!--Bootsrap 4 CDN-->

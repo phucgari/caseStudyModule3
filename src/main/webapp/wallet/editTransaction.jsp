@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Login Page</title>
+    <title>Edit Transaction</title>
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
@@ -96,13 +96,13 @@
                                 Edit Transaction
                             </h2>
                             <c:if test ="${transaction != null}">
-                                <input type="hidden" name="id" value="<c:out value ='${transaction.id}'/>" />
+                                <input type="hidden" name="T_id" value="${transaction.id}" />
                             </c:if>
                             <tr>
                                 <th>time</th>
                                 <td>
-                                    <input type="datetime-local" name="time" id="meeting-time"  min="2018-06-07T00:00" max="2024-06-14T00:00" size="35"
-                                           value = "<c:out value='${transaction.time}'/>">
+                                    <input type="datetime-local" name="T_time" id="T_time"  min="1900-06-07T00:00" max="2100-06-14T00:00" size="35"
+                                           >
                                 </td>
                             </tr>
                             <tr>
@@ -117,6 +117,7 @@
                                 <td>
                                     <input type="text" name="t_action" size="35"
                                            value="<c:out value='${transaction.action}'/>">
+                                    <input type="hidden" name="wallet_id" value="${transaction.getWallet_id().getId()}">
                                 </td>
                             </tr>
                             <tr>

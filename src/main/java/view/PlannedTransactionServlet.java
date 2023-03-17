@@ -49,8 +49,15 @@ public class PlannedTransactionServlet extends HttpServlet {
         long moneyEnd = request.getParameter("money_end") == null ? Long.MAX_VALUE :
                 Long.parseLong(request.getParameter("money_end"));
         ArrayList<PlannedTransaction> plannedTransactions = plannedTransactionController.showPlannedTransactionOnDemand(userId, moneyStart, moneyEnd);
+        long sum=0;
+        for (PlannedTransaction p :
+                plannedTransactions) {
+            sum+=p.getMoney_Amount();
+        }
+        request.setAttribute("sum",sum);
         request.setAttribute("list", plannedTransactions);
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/userAction/showPlannedTransactions.jsp");
+
         try {
             requestDispatcher.forward(request, response);
         } catch (ServletException e) {

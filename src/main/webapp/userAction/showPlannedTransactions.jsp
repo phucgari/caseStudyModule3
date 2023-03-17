@@ -364,6 +364,12 @@
                     </td>
                 </tr>
             </c:forEach>
+            <tr>
+                <td class="p-name">
+                    <h4 >Total Money</h4>
+                </td>
+                <td>${requestScope["sum"]}</td>
+            </tr>
             </tbody>
         </table>
     </section>

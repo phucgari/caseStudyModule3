@@ -14,7 +14,7 @@
 
 <html>
 <head>
-    <title>Login Page</title>
+    <title>Register</title>
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
@@ -167,7 +167,7 @@
                             </tr>
                             <tr>
                                 <td align="center" colspan="2">
-                                    <input class="btn btn-primary btn-block" type="submit" value="Sign in"/>
+                                    <input class="btn btn-primary btn-block" type="submit" value="Sign up"/>
                                 </td>
                             </tr>
                             <tr>

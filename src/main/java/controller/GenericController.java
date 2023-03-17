@@ -7,8 +7,8 @@ import java.util.Collection;
 public interface GenericController<E> {
     String jdbcURL = "jdbc:mysql://localhost:3306/finance_webapp";
     String jdbcUsername = "root";
+    String jdbcPassword = "123456";
 
-    String jdbcPassword = "0398878422suti?";
     Connector connector=new Connector(jdbcURL,jdbcUsername,jdbcPassword);
 
     Collection<E> showAll();

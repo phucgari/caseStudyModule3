@@ -22,9 +22,9 @@ public class TransactionControllerImpl implements TransactionController {
                     "join user on wallet.use_id=user.id";
     private static final String SHOW_TRANSACTION_ON_DEMAND =
             "select transaction.*" +
-                    "from transaction" +
+                    "from transaction " +
                     "join wallet on transaction.wallet_id=wallet.id " +
-                    "where transaction.wallet_id=? and transaction.time between ? and ? and transaction.money_Amount";
+                    "where transaction.wallet_id=? and transaction.time between ? and ? and transaction.money_Amount between ? and ? ";
     private static final String CREATE_A_TRANSACTION = "insert into transaction(time, money_Amount, action, wallet_id) values (?,?,?,?)";
     private static final String UPDATE_A_TRANSACTION = "update transaction set time = ?, money_Amount = ?, action = ? where id = ?";
     private static final String DELETE_A_TRANSACTION = "update transaction set disable=1 WHERE id=?";
