@@ -24,7 +24,8 @@
             line-height: 28px;
             letter-spacing: 0.8px;
             margin-top: 20px;
-            background: rgba(223, 230, 243, 0.98);
+            background-color: rgba(0, 0, 0, 0.8);
+
         }
 
         .font-size38 {
@@ -67,6 +68,11 @@
             .section-heading h5 {
                 font-size: 24px
             }
+        }
+
+        #intro {
+            background-image: url(https://hilaw.vn/wp-content/uploads/2021/10/he-thong-tai-chinh-trong-nen-kinh-te-thi-truong-o-viet-nam.jpg);
+            height: 100vh;
         }
 
 
@@ -293,10 +299,14 @@
                     <form method="post">
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <c:forEach items='${requestScope["wallets"]}' var="wallet">
-                                <li><a class="dropdown-item" name="wallet_id" value="${wallet.getId()}" href="/transaction?id=${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</a></li>
+                                <li><a class="dropdown-item" name="wallet_id" value="${wallet.getId()}"
+                                       href="/transaction?id=${wallet.getId()}">${wallet.getName()}: ${wallet.getBalance()}</a>
+                                </li>
 
                             </c:forEach>
-                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
                             <li>
                                 <a class="dropdown-item" href="/wallet?action=create">+Create...</a>
                             </li>
@@ -322,235 +332,237 @@
 </nav>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
       integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous"/>
-<div class="container">
-    <div class="team-single">
-        <div class="row">
-            <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
-                <div class="team-single-img">
-                    <img src="${requestScope["user"].getPicture_url()}" alt="">
-                </div>
-                <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
-                    <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Profile
-                        Picture</h4>
-                    <%--                    <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>--%>
-                    <div class="margin-20px-top team-single-icons">
-                        <ul class="no-margin">
-                            <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
-                        </ul>
+<div id="intro" class="bg-image shadow-2-strong">
+    <div class="mask d-flex align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.8);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5 xs-margin-30px-bottom">
+                    <div class="team-single-img">
+                        <img src="${requestScope["user"].getPicture_url()}" alt="">
+                    </div>
+                    <div class="bg-light-gray padding-30px-all md-padding-25px-all sm-padding-20px-all text-center">
+                        <h4 class="margin-10px-bottom font-size24 md-font-size22 sm-font-size20 font-weight-600">Profile
+                            Picture</h4>
+                        <%--                    <p class="sm-width-95 sm-margin-auto">We are proud of child student. We teaching great activities and best program for your kids.</p>--%>
+                        <div class="margin-20px-top team-single-icons">
+                            <ul class="no-margin">
+                                <li><a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-twitter"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-google-plus-g"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="fab fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-8 col-md-7">
-                <div class="team-single-text padding-50px-left sm-no-padding-left">
-                    <h4 class="font-size38 sm-font-size32 xs-font-size30">${requestScope["user"].getUser_name()}</h4>
-                    <%--                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>--%>
-                    <div class="contact-info-section margin-40px-tb">
-                        <ul class="list-style9 no-margin">
-                            <li>
+                <div class="col-lg-8 col-md-7" style="background: white">
+                    <div class="team-single-text padding-50px-left sm-no-padding-left">
+                        <h4 class="font-size38 sm-font-size32 xs-font-size30">${requestScope["user"].getUser_name()}</h4>
+                        <%--                    <p class="no-margin-bottom">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum voluptatem.</p>--%>
+                        <div class="contact-info-section margin-40px-tb">
+                            <ul class="list-style9 no-margin">
+                                <li>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fas fa-graduation-cap text-orange"></i>
-                                        <strong class="margin-10px-left text-orange">Login_name:</strong>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-graduation-cap text-orange"></i>
+                                            <strong class="margin-10px-left text-orange">Login_name:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>${requestScope["user"].getLogin_name()}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>${requestScope["user"].getLogin_name()}</p>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="far fa-gem text-yellow"></i>
-                                        <strong class="margin-10px-left text-yellow">Gender</strong>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-gem text-yellow"></i>
+                                            <strong class="margin-10px-left text-yellow">Gender</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>
+                                                <c:choose>
+                                                    <c:when test="${requestScope['user'].isGender()}">Male</c:when>
+                                                    <c:otherwise>Female</c:otherwise>
+                                                </c:choose>
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>
-                                            <c:choose>
-                                                <c:when test="${requestScope['user'].isGender()}">Male</c:when>
-                                                <c:otherwise>Female</c:otherwise>
-                                            </c:choose>
-                                        </p>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="far fa-file text-lightred"></i>
-                                        <strong class="margin-10px-left text-lightred">Card_id:</strong>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="far fa-file text-lightred"></i>
+                                            <strong class="margin-10px-left text-lightred">Card_id:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>${requestScope["user"].getCard_id()}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>${requestScope["user"].getCard_id()}</p>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fas fa-map-marker-alt text-green"></i>
-                                        <strong class="margin-10px-left text-green">Address:</strong>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-map-marker-alt text-green"></i>
+                                            <strong class="margin-10px-left text-green">Address:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>${requestScope["user"].getAddress()}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>${requestScope["user"].getAddress()}</p>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li>
+                                </li>
+                                <li>
 
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fas fa-mobile-alt text-purple"></i>
-                                        <strong class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-mobile-alt text-purple"></i>
+                                            <strong class="margin-10px-left xs-margin-four-left text-purple">Phone:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p>${requestScope["user"].getPhone()}</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p>${requestScope["user"].getPhone()}</p>
-                                    </div>
-                                </div>
 
-                            </li>
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-5 col-5">
-                                        <i class="fas fa-envelope text-pink"></i>
-                                        <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                </li>
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-5 col-5">
+                                            <i class="fas fa-envelope text-pink"></i>
+                                            <strong class="margin-10px-left xs-margin-four-left text-pink">Email:</strong>
+                                        </div>
+                                        <div class="col-md-7 col-7">
+                                            <p><a href="javascript:void(0)">${requestScope["user"].getEmail()}</a></p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-7 col-7">
-                                        <p><a href="javascript:void(0)">${requestScope["user"].getEmail()}</a></p>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <%--                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Professional Skills</h5>--%>
+
+                        <%--                    <div class="sm-no-margin">--%>
+                        <%--                        <div class="progress-text">--%>
+                        <%--                            <div class="row">--%>
+                        <%--                                <div class="col-7">Positive Behaviors</div>--%>
+                        <%--                                <div class="col-5 text-right">40%</div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="custom-progress progress">--%>
+                        <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%" class="animated custom-bar progress-bar slideInLeft bg-sky"></div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="progress-text">--%>
+                        <%--                            <div class="row">--%>
+                        <%--                                <div class="col-7">Teamworking Abilities</div>--%>
+                        <%--                                <div class="col-5 text-right">50%</div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="custom-progress progress">--%>
+                        <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%" class="animated custom-bar progress-bar slideInLeft bg-orange"></div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="progress-text">--%>
+                        <%--                            <div class="row">--%>
+                        <%--                                <div class="col-7">Time Management </div>--%>
+                        <%--                                <div class="col-5 text-right">60%</div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="custom-progress progress">--%>
+                        <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:60%" class="animated custom-bar progress-bar slideInLeft bg-green"></div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="progress-text">--%>
+                        <%--                            <div class="row">--%>
+                        <%--                                <div class="col-7">Excellent Communication</div>--%>
+                        <%--                                <div class="col-5 text-right">80%</div>--%>
+                        <%--                            </div>--%>
+                        <%--                        </div>--%>
+                        <%--                        <div class="custom-progress progress">--%>
+                        <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>--%>
+                        <%--                        </div>--%>
+                        <%--                    </div>--%>
+
                     </div>
+                </div>
 
-                    <%--                    <h5 class="font-size24 sm-font-size22 xs-font-size20">Professional Skills</h5>--%>
-
-                    <%--                    <div class="sm-no-margin">--%>
-                    <%--                        <div class="progress-text">--%>
-                    <%--                            <div class="row">--%>
-                    <%--                                <div class="col-7">Positive Behaviors</div>--%>
-                    <%--                                <div class="col-5 text-right">40%</div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="custom-progress progress">--%>
-                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:40%" class="animated custom-bar progress-bar slideInLeft bg-sky"></div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="progress-text">--%>
-                    <%--                            <div class="row">--%>
-                    <%--                                <div class="col-7">Teamworking Abilities</div>--%>
-                    <%--                                <div class="col-5 text-right">50%</div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="custom-progress progress">--%>
-                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:50%" class="animated custom-bar progress-bar slideInLeft bg-orange"></div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="progress-text">--%>
-                    <%--                            <div class="row">--%>
-                    <%--                                <div class="col-7">Time Management </div>--%>
-                    <%--                                <div class="col-5 text-right">60%</div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="custom-progress progress">--%>
-                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:60%" class="animated custom-bar progress-bar slideInLeft bg-green"></div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="progress-text">--%>
-                    <%--                            <div class="row">--%>
-                    <%--                                <div class="col-7">Excellent Communication</div>--%>
-                    <%--                                <div class="col-5 text-right">80%</div>--%>
-                    <%--                            </div>--%>
-                    <%--                        </div>--%>
-                    <%--                        <div class="custom-progress progress">--%>
-                    <%--                            <div role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width:80%" class="animated custom-bar progress-bar slideInLeft bg-yellow"></div>--%>
-                    <%--                        </div>--%>
-                    <%--                    </div>--%>
+                <div class="col-md-12">
 
                 </div>
-            </div>
-
-            <div class="col-md-12">
-
             </div>
         </div>
     </div>
 </div>
-<%--<div class="container-fluid text-center">--%>
-<%--    <div class="row content">--%>
-<%--        <div class="col-sm-2 sidenav">--%>
-<%--            <img class="profilepic" src="https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-tien-te-1.jpg">--%>
-<%--            <p><a href="#">Link</a></p>--%>
-<%--            <p><a href="#">Link</a></p>--%>
-<%--        </div>--%>
-<%--        <div class="col-sm-8 text-left">--%>
-<%--            <h1>Profile of ${requestScope["login_name"]}</h1>--%>
-<%--            <table>--%>
-<%--                <tr>--%>
-<%--                    <th>Id</th>--%>
-<%--                    <th>${requestScope["user"].getId()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Login_name</th>--%>
-<%--                    <th>${requestScope["user"].getLogin_name()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Email</th>--%>
-<%--                    <th>${requestScope["user"].getEmail()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>gender</th>--%>
-<%--                    <th><c:choose><c:when test="${requestScope['user'].isGender()}">male</c:when><c:otherwise>female</c:otherwise></c:choose></th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>User Name</th>--%>
-<%--                    <th>${requestScope["user"].getUser_name()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Date of birth</th>--%>
-<%--                    <th>${requestScope["user"].getUser_dob()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Card_id</th>--%>
-<%--                    <th>${requestScope["user"].getCard_id()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Phone</th>--%>
-<%--                    <th>${requestScope["user"].getPhone()}</th>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <th>Address</th>--%>
-<%--                    <th>${requestScope["user"].getAddress()}</th>--%>
-<%--                </tr>--%>
-<%--            </table>--%>
-<%--            <hr>--%>
-<%--            <h3>Test</h3>--%>
-<%--            <p>Lorem ipsum...</p>--%>
-<%--        </div>--%>
-<%--        <div class="col-sm-2 sidenav">--%>
-<%--            <div class="well">--%>
-<%--                <p>ADS</p>--%>
-<%--            </div>--%>
-<%--            <div class="well">--%>
-<%--                <p>ADS</p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
-<%--<footer class="container-fluid text-center">--%>
-<%--    <p>Footer Text</p>--%>
-<%--</footer>--%>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-        crossorigin="anonymous"></script>
+    <%--<div class="container-fluid text-center">--%>
+    <%--    <div class="row content">--%>
+    <%--        <div class="col-sm-2 sidenav">--%>
+    <%--            <img class="profilepic" src="https://msmobile.com.vn/upload_images/images/hinh-nen-powerpoint-tien-te-1.jpg">--%>
+    <%--            <p><a href="#">Link</a></p>--%>
+    <%--            <p><a href="#">Link</a></p>--%>
+    <%--        </div>--%>
+    <%--        <div class="col-sm-8 text-left">--%>
+    <%--            <h1>Profile of ${requestScope["login_name"]}</h1>--%>
+    <%--            <table>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Id</th>--%>
+    <%--                    <th>${requestScope["user"].getId()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Login_name</th>--%>
+    <%--                    <th>${requestScope["user"].getLogin_name()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Email</th>--%>
+    <%--                    <th>${requestScope["user"].getEmail()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>gender</th>--%>
+    <%--                    <th><c:choose><c:when test="${requestScope['user'].isGender()}">male</c:when><c:otherwise>female</c:otherwise></c:choose></th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>User Name</th>--%>
+    <%--                    <th>${requestScope["user"].getUser_name()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Date of birth</th>--%>
+    <%--                    <th>${requestScope["user"].getUser_dob()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Card_id</th>--%>
+    <%--                    <th>${requestScope["user"].getCard_id()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Phone</th>--%>
+    <%--                    <th>${requestScope["user"].getPhone()}</th>--%>
+    <%--                </tr>--%>
+    <%--                <tr>--%>
+    <%--                    <th>Address</th>--%>
+    <%--                    <th>${requestScope["user"].getAddress()}</th>--%>
+    <%--                </tr>--%>
+    <%--            </table>--%>
+    <%--            <hr>--%>
+    <%--            <h3>Test</h3>--%>
+    <%--            <p>Lorem ipsum...</p>--%>
+    <%--        </div>--%>
+    <%--        <div class="col-sm-2 sidenav">--%>
+    <%--            <div class="well">--%>
+    <%--                <p>ADS</p>--%>
+    <%--            </div>--%>
+    <%--            <div class="well">--%>
+    <%--                <p>ADS</p>--%>
+    <%--            </div>--%>
+    <%--        </div>--%>
+    <%--    </div>--%>
+    <%--</div>--%>
+    <%--<footer class="container-fluid text-center">--%>
+    <%--    <p>Footer Text</p>--%>
+    <%--</footer>--%>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
 </body>
 <script>
     function confirmDelete() {

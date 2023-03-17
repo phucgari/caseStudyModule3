@@ -15,7 +15,7 @@
 
 <html>
 <head>
-    <title>Login Page</title>
+    <title>Edit Profile</title>
     <!--Made with love by Mutiullah Samim -->
 
     <!--Bootsrap 4 CDN-->
@@ -187,8 +187,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2" align="center">
-                                    <button class="btn btn-primary btn-block" type="submit" value="Save"
-                                            onclick="confirmUpdate()"> save
+                                    <button class="btn btn-primary btn-block" type="submit" value="Save"> save
                                     </button>
                                 </td>
                             </tr>
@@ -205,11 +204,4 @@
     </div>
 </div>
 </body>
-<script>
-    function confirmUpdate() {
-        if (confirm("Successfully updated personal information")) {
-            window.location = "http://localhost:8080/user"
-        }
-    }
-</script>
 </html>

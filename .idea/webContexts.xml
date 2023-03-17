@@ -6,6 +6,7 @@
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/userAction/editProfile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/userAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/userAction/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/userAction" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/userAction/profile.jsp" value="file://$PROJECT_DIR$/src/main/webapp/userAction" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/userAction/register.jsp" value="file://$PROJECT_DIR$/src/main/webapp/userAction" />
       </map>
     </option>
